@@ -13,8 +13,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ranjsidhu.dev"),
   title: "Ranj Sidhu",
   description: "Coming Soon",
+  openGraph: {
+    title: "Ranj Sidhu | Software Engineer",
+    description: "A new journey in software engineering excellence",
+    url: "https://ranjsidhu.dev",
+    siteName: "Ranj Sidhu",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Ranj Sidhu - Software Engineer",
+      },
+    ],
+    locale: "en_UK",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
