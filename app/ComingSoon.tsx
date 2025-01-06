@@ -152,7 +152,7 @@ const ComingSoonPage: React.FC = () => {
                       </span>
                     </a>
                     <a
-                      href="https://www.linkedin.com/in/ranjeetsinghsidhu/"
+                      href="https://www.linkedin.com/in/ranjsidhu/"
                       target="_blank"
                       className="group px-6 py-3 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 backdrop-blur-xl border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300 flex items-center gap-3"
                     >
