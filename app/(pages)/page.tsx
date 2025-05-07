@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FeaturedProject } from "../components";
+import { homepageSkills } from "@/constants";
 
 export default function HomePage() {
   return (
@@ -65,6 +67,13 @@ export default function HomePage() {
             >
               <FaLinkedin size={32} color="#000" />
             </Link>
+            <Link
+              href="mailto:ranj@ranjsidhu.dev"
+              aria-label="Email"
+              className="hover:opacity-70 transition"
+            >
+              <FaEnvelope size={32} color="#000" />
+            </Link>
           </div>
         </div>
       </section>
@@ -94,46 +103,22 @@ export default function HomePage() {
           Featured Projects
         </h3>
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Stellar Recruitment */}
-          <div className="group border border-black/10 rounded-2xl bg-white shadow-sm p-8 flex flex-col justify-between hover:shadow-lg transition relative overflow-hidden">
-            <h4 className="text-xl font-light text-black mb-2 group-hover:underline transition">
-              Stellar Recruitment
-            </h4>
-            <p className="text-black/70 mb-4">
-              A bespoke recruitment system, crafted for a client in the
+          <FeaturedProject
+            title="Stellar Recruitment"
+            tagline="              A bespoke recruitment system, crafted for a client in the
               recruitment industry. Streamlines hiring, candidate management,
-              and empowers teams with custom workflows.
-            </p>
-            <Link
-              href="/projects/stellar-recruitment"
-              className="inline-block mt-auto px-6 py-2 rounded-full bg-black text-white font-light tracking-widest uppercase shadow-sm hover:bg-black/80 transition text-sm"
-            >
-              View Details
-            </Link>
-            <span className="absolute right-6 top-6 text-6xl text-black/5 font-bold select-none">
-              SR
-            </span>
-          </div>
-          {/* Tutoring To Success */}
-          <div className="group border border-black/10 rounded-2xl bg-white shadow-sm p-8 flex flex-col justify-between hover:shadow-lg transition relative overflow-hidden">
-            <h4 className="text-xl font-light text-black mb-2 group-hover:underline transition">
-              Tutoring To Success
-            </h4>
-            <p className="text-black/70 mb-4">
-              A custom website for a local tutoring agency, designed to build
+              and empowers teams with custom workflows."
+            slug="/projects/stellar-recruitment"
+            scaledText="SR"
+          />
+          <FeaturedProject
+            title="Tutoring To Success"
+            tagline="A custom website for a local tutoring agency, designed to build
               trust, showcase success stories, and make it easy for families to
-              connect.
-            </p>
-            <Link
-              href="/projects/tutoring-to-success"
-              className="inline-block mt-auto px-6 py-2 rounded-full bg-black text-white font-light tracking-widest uppercase shadow-sm hover:bg-black/80 transition text-sm"
-            >
-              View Details
-            </Link>
-            <span className="absolute right-6 top-6 text-6xl text-black/5 font-bold select-none">
-              TTS
-            </span>
-          </div>
+              connect."
+            slug="/projects/tutoring-to-success"
+            scaledText="TTS"
+          />
         </div>
       </section>
 
@@ -143,18 +128,7 @@ export default function HomePage() {
           Expertise
         </h3>
         <div className="flex flex-wrap justify-center gap-3 mb-4">
-          {[
-            "Next.js",
-            "React",
-            "TypeScript",
-            "Tailwind CSS",
-            "Node.js",
-            "Express",
-            "PostgreSQL",
-            "UI/UX",
-            "APIs",
-            "Custom Dashboards",
-          ].map((skill) => (
+          {homepageSkills.map((skill) => (
             <span
               key={skill}
               className="px-4 py-1 bg-black/10 text-black/80 rounded-full text-xs font-light tracking-wider"
