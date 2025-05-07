@@ -29,10 +29,18 @@ type ProjectDetailsProps = Readonly<{
   url: string;
 }>;
 
+type FeaturedProjectProps = Readonly<{
+  title: string;
+  tagline: string;
+  slug: string;
+  scaledText: string;
+}>;
+
 export {
   type ContactDetails,
   type LayoutProps,
   type TechTagProps,
   type ProjectProps,
   type ProjectDetailsProps,
+  type FeaturedProjectProps,
 };
