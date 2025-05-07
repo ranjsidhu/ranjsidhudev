@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const ComingSoonPage: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
   const [seconds, setSeconds] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     setLoaded(true);
@@ -19,7 +21,7 @@ const ComingSoonPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="h-screen w-screen bg-white overflow-hidden flex flex-col items-center justify-center relative">
+    <div className="min-h-screen w-full bg-white overflow-hidden flex flex-col items-center justify-center relative">
       {/* Animated lines */}
       <div className="absolute inset-0 w-full h-full">
         {[...Array(10)].map((_, i) => (
@@ -94,8 +96,17 @@ const ComingSoonPage: React.FC = () => {
         </div>
       </div>
 
+      <button
+        style={{ zIndex: 100 }}
+        onClick={() => router.push("/contact")}
+        className="mt-6 px-8 py-3 bg-black text-white rounded-full font-light tracking-widest uppercase shadow-sm hover:cursor-pointer hover:bg-black/80 transition"
+        type="button"
+      >
+        Get in touch
+      </button>
+
       {/* Subtle background effect */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
           style={{
