@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function HomePage() {
   return (
@@ -42,6 +43,27 @@ export default function HomePage() {
               className="px-8 py-3 rounded-full border border-black text-black font-light tracking-widest uppercase shadow-sm hover:bg-black hover:text-white transition text-base"
             >
               Let&apos;s Connect
+            </Link>
+          </div>
+          {/* Social Icons */}
+          <div className="flex gap-6 mt-8">
+            <Link
+              href="https://www.instagram.com/ranjsidhu.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="hover:opacity-70 transition"
+            >
+              <FaInstagram size={32} color="#000" />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/ranjsidhu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="hover:opacity-70 transition"
+            >
+              <FaLinkedin size={32} color="#000" />
             </Link>
           </div>
         </div>
