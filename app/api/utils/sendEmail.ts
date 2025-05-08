@@ -2,7 +2,7 @@ import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
 
 const {
   AWS_REGION,
-  AWS_ACCESS_KEY,
+  AWS_AK,
   AWS_SECRET_ACCESS_KEY,
   SENDER_EMAIL,
   ADMIN_DESTINATION_EMAIL,
@@ -11,7 +11,7 @@ const {
 const client = new SESv2Client({
   region: AWS_REGION!,
   credentials: {
-    accessKeyId: AWS_ACCESS_KEY!,
+    accessKeyId: AWS_AK!,
     secretAccessKey: AWS_SECRET_ACCESS_KEY!,
   },
 });
