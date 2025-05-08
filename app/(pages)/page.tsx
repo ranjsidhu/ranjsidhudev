@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaEnvelope, FaGithub } from "react-icons/fa";
 import { FeaturedProject } from "../components";
 import { homepageSkills } from "@/constants";
 
@@ -73,6 +73,15 @@ export default function HomePage() {
               className="hover:opacity-70 transition"
             >
               <FaEnvelope size={32} color="#000" />
+            </Link>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/ranjsidhu"
+              aria-label="GitHub"
+              className="hover:opacity-70 transition"
+            >
+              <FaGithub size={32} color="#000" />
             </Link>
           </div>
         </div>
