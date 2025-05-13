@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FaInstagram, FaLinkedin, FaEnvelope, FaGithub } from "react-icons/fa";
-import { FeaturedProject } from "../components";
+import { FeaturedProject, Socials } from "../components";
 import { homepageSkills } from "@/constants";
 
 export default function HomePage() {
@@ -49,40 +48,7 @@ export default function HomePage() {
           </div>
           {/* Social Icons */}
           <div className="flex gap-6 mt-8">
-            <Link
-              href="https://www.instagram.com/ranjsidhu.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="hover:opacity-70 transition"
-            >
-              <FaInstagram size={32} color="#000" />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/ranjsidhu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="hover:opacity-70 transition"
-            >
-              <FaLinkedin size={32} color="#000" />
-            </Link>
-            <Link
-              href="mailto:ranj@ranjsidhu.dev"
-              aria-label="Email"
-              className="hover:opacity-70 transition"
-            >
-              <FaEnvelope size={32} color="#000" />
-            </Link>
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://github.com/ranjsidhu"
-              aria-label="GitHub"
-              className="hover:opacity-70 transition"
-            >
-              <FaGithub size={32} color="#000" />
-            </Link>
+            <Socials size={32} />
           </div>
         </div>
       </section>

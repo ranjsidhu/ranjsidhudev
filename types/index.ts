@@ -36,6 +36,10 @@ type FeaturedProjectProps = Readonly<{
   scaledText: string;
 }>;
 
+type SocialProps = {
+  size: number;
+}
+
 export {
   type ContactDetails,
   type LayoutProps,
@@ -43,4 +47,5 @@ export {
   type ProjectProps,
   type ProjectDetailsProps,
   type FeaturedProjectProps,
+  type SocialProps
 };
