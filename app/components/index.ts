@@ -5,6 +5,7 @@ import Project from "./Project";
 import ProjectDetails from "./ProjectDetails";
 import ComingSoonPage from "./ComingSoon";
 import FeaturedProject from "./FeaturedProject";
+import Socials from "./Socials"
 
 export {
   Layout,
@@ -14,4 +15,5 @@ export {
   ProjectDetails,
   ComingSoonPage,
   FeaturedProject,
+  Socials
 };

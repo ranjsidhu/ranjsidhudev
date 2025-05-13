@@ -1,4 +1,4 @@
-import { FaInstagram, FaLinkedin, FaEnvelope, FaGithub } from "react-icons/fa";
+import { Socials } from "@/app/components";
 import Link from "next/link";
 
 export default function Footer() {
@@ -25,40 +25,7 @@ export default function Footer() {
             Connect
           </span>
           <div className="flex gap-4 mb-3">
-            <a
-              href="https://www.instagram.com/ranjsidhu.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="hover:opacity-70 transition"
-            >
-              <FaInstagram size={24} color="#000" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ranjsidhu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="hover:opacity-70 transition"
-            >
-              <FaLinkedin size={24} color="#000" />
-            </a>
-            <a
-              href="mailto:ranj@ranjsidhu.dev"
-              aria-label="Email"
-              className="hover:opacity-70 transition"
-            >
-              <FaEnvelope size={24} color="#000" />
-            </a>
-            <a
-              href="https://github.com/ranjsidhu"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="hover:opacity-70 transition"
-            >
-              <FaGithub size={24} color="#000" />
-            </a>
+            <Socials size={24} />
           </div>
         </div>
 
