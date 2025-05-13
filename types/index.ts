@@ -1,9 +1,9 @@
-type ContactDetails = {
+type ContactDetails = Readonly<{
   name: string;
   email: string;
   enquiryType: string;
   message: string;
-};
+}>;
 
 type LayoutProps = Readonly<{
   children: React.ReactNode;
@@ -36,9 +36,9 @@ type FeaturedProjectProps = Readonly<{
   scaledText: string;
 }>;
 
-type SocialProps = {
+type SocialProps = Readonly<{
   size: number;
-}
+}>;
 
 export {
   type ContactDetails,
@@ -47,5 +47,5 @@ export {
   type ProjectProps,
   type ProjectDetailsProps,
   type FeaturedProjectProps,
-  type SocialProps
+  type SocialProps,
 };
