@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,11 +18,38 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ranjsidhu.dev"),
-  title: "Ranj Sidhu",
-  description: "Coming Soon",
+  title: {
+    default: "Ranj Sidhu | Software Engineer",
+    template: "%s | Ranj Sidhu",
+  },
+  description:
+    "Software Engineer specializing in full-stack development, with expertise in modern web technologies and best practices.",
+  keywords: [
+    "Software Engineer",
+    "Full Stack Developer",
+    "Web Development",
+    "React",
+    "Next.js",
+    "TypeScript",
+  ],
+  authors: [{ name: "Ranj Sidhu" }],
+  creator: "Ranj Sidhu",
+  publisher: "Ranj Sidhu",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Ranj Sidhu | Software Engineer",
-    description: "A new journey in software engineering excellence",
+    description:
+      "Software Engineer specializing in full-stack development, with expertise in modern web technologies and best practices.",
     url: "https://ranjsidhu.dev",
     siteName: "Ranj Sidhu",
     images: [
@@ -35,6 +63,29 @@ export const metadata: Metadata = {
     locale: "en_UK",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ranj Sidhu | Software Engineer",
+    description:
+      "Software Engineer specializing in full-stack development, with expertise in modern web technologies and best practices.",
+    images: ["/og.png"],
+    creator: "@ranjsidhu",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ranj Sidhu",
+  url: "https://ranjsidhu.dev",
+  jobTitle: "Software Engineer",
+  description:
+    "Software Engineer specializing in full-stack development, with expertise in modern web technologies and best practices.",
+  sameAs: [
+    "https://github.com/ranjsidhu",
+    "https://linkedin.com/in/ranjsidhu",
+    "https://twitter.com/ranjsidhu",
+  ],
 };
 
 export default function RootLayout({
@@ -44,6 +95,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS Feed for Ranj Sidhu"
+          href="/feed.xml"
+        />
+        <meta name="theme-color" content="#000000" />
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

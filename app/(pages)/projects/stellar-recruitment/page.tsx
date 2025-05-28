@@ -1,6 +1,18 @@
+import type { Metadata } from "next";
 import { ProjectDetails } from "@/app/components";
 
-export default function StellarRecruitmentProjectPage() {
+export const metadata: Metadata = {
+  title: "Stellar Recruitment",
+  description:
+    "A bespoke recruitment system crafted for the recruitment industry. Features streamlined hiring, candidate management, and custom workflows.",
+  openGraph: {
+    title: "Stellar Recruitment | Ranj Sidhu",
+    description:
+      "Custom recruitment platform with advanced candidate management, streamlined hiring processes, and tailored workflow solutions.",
+  },
+};
+
+export default function StellarRecruitmentPage() {
   return (
     <ProjectDetails
       title="Stellar Recruitment"

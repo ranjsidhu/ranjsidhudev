@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ranj Sidhu - Software Engineer</title>
+    <link>https://ranjsidhu.dev</link>
+    <description>Software Engineer specializing in bespoke web solutions and full-stack development</description>
+    <language>en-uk</language>
+    <lastBuildDate>Wed, 28 May 2025 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://ranjsidhu.dev/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Stellar Recruitment</title>
+      <link>https://ranjsidhu.dev/projects/stellar-recruitment</link>
+      <description>A bespoke recruitment system crafted for the recruitment industry. Features streamlined hiring, candidate management, and custom workflows.</description>
+      <pubDate>Wed, 28 May 2025 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Tutoring To Success</title>
+      <link>https://ranjsidhu.dev/projects/tutoring-to-success</link>
+      <description>A custom website for a local tutoring agency, designed to build trust, showcase success stories, and make it easy for families to connect.</description>
+      <pubDate>Wed, 28 May 2025 12:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss> 
