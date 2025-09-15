@@ -6,7 +6,7 @@ export default function ProjectDetails({
   tagline,
   description,
   benefits,
-  role,
+  work,
   url,
 }: ProjectDetailsProps) {
   return (
@@ -84,7 +84,7 @@ export default function ProjectDetails({
             data-testid="project-details-role-desc"
             className="text-black/80 text-lg text-center mb-2"
           >
-            {role}
+            {work}
           </p>
         </div>
 

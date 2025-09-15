@@ -4,7 +4,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { ENQUIRY_OPTIONS, initialForm, validateEmail } from "@/constants";
 import { submitContactForm } from "./serveractions";
-import { ContactDetails } from "@/types";
+import type { ContactDetails } from "@/types";
 
 export default function Contact() {
   const [form, setForm] = useState<ContactDetails>(initialForm);

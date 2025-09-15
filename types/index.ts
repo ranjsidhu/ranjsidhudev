@@ -25,7 +25,7 @@ type ProjectDetailsProps = Readonly<{
   tagline: string;
   description: string;
   benefits: string[];
-  role: string;
+  work: string;
   url: string;
 }>;
 
@@ -40,12 +40,12 @@ type SocialProps = Readonly<{
   size: number;
 }>;
 
-export {
-  type ContactDetails,
-  type LayoutProps,
-  type TechTagProps,
-  type ProjectProps,
-  type ProjectDetailsProps,
-  type FeaturedProjectProps,
-  type SocialProps,
+export type {
+  ContactDetails,
+  LayoutProps,
+  TechTagProps,
+  ProjectProps,
+  ProjectDetailsProps,
+  FeaturedProjectProps,
+  SocialProps,
 };

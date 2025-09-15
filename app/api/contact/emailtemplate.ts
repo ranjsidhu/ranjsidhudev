@@ -1,4 +1,4 @@
-import { ContactDetails } from "@/types";
+import type { ContactDetails } from "@/types";
 
 export const formatEmail = (details: ContactDetails, subject: string) => {
   return `
