@@ -1,4 +1,4 @@
-import { TechTagProps } from "@/types";
+import type { TechTagProps } from "@/types";
 
 export default function TechTag({ name }: TechTagProps) {
   return (

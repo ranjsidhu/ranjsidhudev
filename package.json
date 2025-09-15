@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "npx @biomejs/biome lint --max-diagnostics 1000",
     "prepare": "husky"
   },
   "dependencies": {
@@ -21,14 +21,12 @@
     "tailwindcss": "3.4.17"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.4",
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
-    "@eslint/eslintrc": "3.3.1",
     "@types/node": "24.4.0",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
-    "eslint": "9.35.0",
-    "eslint-config-next": "15.5.3",
     "husky": "9.1.7",
     "typescript": "5.9.2"
   }

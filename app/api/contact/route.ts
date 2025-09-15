@@ -1,4 +1,4 @@
-import { ContactDetails } from "@/types";
+import type { ContactDetails } from "@/types";
 import { type NextRequest, NextResponse } from "next/server";
 import { formatEmail } from "./emailtemplate";
 import { sendEmail } from "../utils/sendEmail";
