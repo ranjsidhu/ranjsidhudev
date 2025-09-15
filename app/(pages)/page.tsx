@@ -125,12 +125,6 @@ export default function HomePage() {
           >
             About
           </Link>
-          <Link
-            href="/blog"
-            className="px-10 py-4 rounded-full border border-black text-black font-light tracking-widest uppercase shadow-lg hover:bg-black hover:text-white transition text-lg"
-          >
-            Blog
-          </Link>
         </div>
       </section>
     </div>
