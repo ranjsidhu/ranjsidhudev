@@ -13,7 +13,7 @@ export default function TutoringToSuccessProjectPage() {
         "Mobile-friendly and accessible for all users",
         "Built to support the agency's growth and reputation",
       ]}
-      role="I worked directly with the agency to understand their values, goals, and the needs of their clients. The result: a website that reflects their passion for education and helps more families connect with their services."
+      work="I worked directly with the agency to understand their values, goals, and the needs of their clients. The result: a website that reflects their passion for education and helps more families connect with their services."
       url="https://www.tutoringtosuccess.co.uk/"
     />
   );

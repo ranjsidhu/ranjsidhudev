@@ -1,7 +1,6 @@
 const ENQUIRY_OPTIONS = [
   { value: "project", label: "Project Collaboration" },
   { value: "hiring", label: "Hiring Opportunity" },
-  { value: "consultation", label: "Consultation" },
   { value: "feedback", label: "Feedback" },
   { value: "other", label: "Other" },
 ];
