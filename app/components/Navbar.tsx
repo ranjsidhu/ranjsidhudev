@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { navLinks } from "@/constants";
 
 const Navbar = () => {
@@ -13,7 +13,6 @@ const Navbar = () => {
   return (
     <nav
       className="fixed w-full z-50 transition-all duration-300 bg-white"
-      role="navigation"
       aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

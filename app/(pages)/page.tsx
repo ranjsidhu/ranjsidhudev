@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { FeaturedProject, Socials } from "../components";
+import Link from "next/link";
 import { homepageSkills } from "@/constants";
+import { FeaturedProject, Socials } from "../components";
 
 export default function HomePage() {
   return (
@@ -30,20 +30,20 @@ export default function HomePage() {
             Ranj Sidhu
           </h1>
           <h2 className="text-xl md:text-2xl text-black/70 font-light tracking-wider text-center mb-8 animate-slideup">
-            Software Engineer &amp; Bespoke Web Solutions
+            Software Engineer • Personal Portfolio
           </h2>
           <div className="flex gap-4 mt-2">
             <Link
               href="#projects"
               className="px-8 py-3 rounded-full bg-black text-white font-light tracking-widest uppercase shadow-sm hover:bg-black/80 transition text-base"
             >
-              View Work
+              View Portfolio
             </Link>
             <Link
-              href="/contact"
+              href="/about"
               className="px-8 py-3 rounded-full border border-black text-black font-light tracking-widest uppercase shadow-sm hover:bg-black hover:text-white transition text-base"
             >
-              Let&apos;s Connect
+              About Me
             </Link>
           </div>
           {/* Social Icons */}
@@ -56,19 +56,15 @@ export default function HomePage() {
       {/* About Section */}
       <section className="w-full max-w-3xl mx-auto px-4 py-16 flex flex-col items-center text-center">
         <h3 className="text-2xl font-light text-black mb-4 tracking-wider">
-          About Me
+          Hi, I&apos;m Ranj
         </h3>
         <p className="text-black/80 text-lg mb-4">
-          I&apos;m Ranj, a passionate software engineer specializing in building
-          bespoke, high-impact web applications for businesses and agencies. I
-          blend technical expertise with a deep understanding of client needs to
-          deliver solutions that are not just functional, but beautiful and
-          user-focused.
+          I build thoughtful, user‑centric web experiences with Next.js, React,
+          and TypeScript.
         </p>
         <p className="text-black/60 text-base">
-          From complex recruitment platforms to elegant local business sites, I
-          bring ideas to life with clean code, modern design, and a relentless
-          focus on quality.
+          This portfolio highlights selected work, experiments, and the craft
+          behind how I ship.
         </p>
       </section>
 
@@ -117,18 +113,19 @@ export default function HomePage() {
       {/* Call to Action */}
       <section className="w-full max-w-2xl mx-auto px-4 py-16 flex flex-col items-center text-center">
         <h3 className="text-2xl font-light text-black mb-4 tracking-wider">
-          Let&apos;s Build Something Great
+          Explore More
         </h3>
         <p className="text-black/80 text-lg mb-8">
-          Ready to take your business to the next level? I&apos;m always open to
-          new projects and collaborations.
+          Learn more about me and my approach, or dive into recent writing.
         </p>
-        <Link
-          href="/contact"
-          className="px-10 py-4 rounded-full bg-black text-white font-light tracking-widest uppercase shadow-lg hover:bg-black/80 transition text-lg"
-        >
-          Get in Touch
-        </Link>
+        <div className="flex gap-4">
+          <Link
+            href="/about"
+            className="px-10 py-4 rounded-full bg-black text-white font-light tracking-widest uppercase shadow-lg hover:bg-black/80 transition text-lg"
+          >
+            About
+          </Link>
+        </div>
       </section>
     </div>
   );

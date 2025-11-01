@@ -25,7 +25,7 @@ export default function TutoringToSuccessPage() {
         "Mobile-friendly design for parents on the go",
         "Clear presentation of services and expertise",
       ]}
-      role="I designed and developed a website that reflects the agency's commitment to quality education, making it easy for families to find the right tutor for their needs."
+      work="I designed and developed a website that reflects the agency's commitment to quality education, making it easy for families to find the right tutor for their needs."
       url="https://www.tutoringtosuccess.co.uk/"
     />
   );

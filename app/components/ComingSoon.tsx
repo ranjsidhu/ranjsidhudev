@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const ComingSoonPage: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
@@ -26,7 +26,7 @@ const ComingSoonPage: React.FC = () => {
       <div className="absolute inset-0 w-full h-full">
         {[...Array(10)].map((_, i) => (
           <div
-            key={`horizontal-${i}`}
+            key={`horizontal-${i.toString()}`}
             className="absolute h-px bg-black/5"
             style={{
               left: 0,
@@ -43,7 +43,7 @@ const ComingSoonPage: React.FC = () => {
 
         {[...Array(10)].map((_, i) => (
           <div
-            key={`vertical-${i}`}
+            key={`vertical-${i.toString()}`}
             className="absolute w-px bg-black/5 h-full"
             style={{
               top: 0,

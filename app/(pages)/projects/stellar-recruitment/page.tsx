@@ -25,7 +25,7 @@ export default function StellarRecruitmentPage() {
         "Enables better decision-making with clear dashboards and reporting",
         "Scalable foundation for future growth",
       ]}
-      role="I worked closely with the client to understand their needs, map out workflows, and deliver a robust, user-friendly solution. The result: a system that fits seamlessly into their business and delivers real value every day."
+      work="I worked closely with the client to understand their needs, map out workflows, and deliver a robust, user-friendly solution. The result: a system that fits seamlessly into their business and delivers real value every day."
       url="https://www.stellar-recruitment.co.uk/"
     />
   );

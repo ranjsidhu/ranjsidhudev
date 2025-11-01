@@ -1,5 +1,5 @@
-import { Socials } from "@/app/components";
 import Link from "next/link";
+import { Socials } from "@/app/components";
 
 export default function Footer() {
   return (
@@ -10,9 +10,7 @@ export default function Footer() {
           <span className="text-black font-light tracking-widest uppercase text-lg mb-2">
             Ranj Sidhu
           </span>
-          <span className="text-black/60 text-xs mb-2">
-            Bespoke Software Engineer
-          </span>
+          <span className="text-black/60 text-xs mb-2">Software Engineer</span>
           <span className="text-black/30 text-xs">Based in the UK</span>
           <span className="text-black/30 text-xs mt-2">
             &copy; {new Date().getFullYear()} Ranj Sidhu
@@ -30,9 +28,9 @@ export default function Footer() {
         </div>
 
         {/* Call to Action */}
-        <div className="flex flex-col items-center md:items-end">
+        <div className="flex flex-col items-center md:items-start">
           <span className="text-black/70 font-semibold mb-3 tracking-wider uppercase text-xs">
-            Let&apos;s Work Together
+            Let&apos;s Connect
           </span>
           <Link
             href="/contact"

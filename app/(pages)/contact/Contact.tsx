@@ -3,17 +3,18 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { ENQUIRY_OPTIONS, initialForm, validateEmail } from "@/constants";
+import type { ContactDetails } from "@/types";
 import { submitContactForm } from "./serveractions";
-import { ContactDetails } from "@/types";
 
 export default function Contact() {
   const [form, setForm] = useState<ContactDetails>(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -23,13 +24,15 @@ export default function Contact() {
       return;
     }
     try {
+      setIsSubmitting(true);
       await submitContactForm(form);
-    } catch (error: any) {
-      console.error("Error submitting form:", error.message);
+    } catch (error: unknown) {
+      console.error("Error submitting form:", (error as Error).message);
       toast.error("There was an error submitting the form. Please try again.");
     } finally {
       setSubmitted(true);
       setForm(initialForm);
+      setIsSubmitting(false);
     }
   };
 
@@ -132,9 +135,43 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="w-full py-3 rounded-full bg-black text-white font-light tracking-widest uppercase hover:bg-black/80 transition"
+              disabled={isSubmitting}
+              aria-busy={isSubmitting}
+              aria-disabled={isSubmitting}
+              className={`w-full py-3 rounded-full text-white font-light tracking-widest uppercase transition ${
+                isSubmitting
+                  ? "bg-black/70 cursor-not-allowed"
+                  : "bg-black hover:bg-black/80"
+              }`}
             >
-              Send Message
+              {isSubmitting ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="w-5 h-5 animate-spin"
+                  >
+                    <title>Loading</title>
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    />
+                  </svg>
+                  Sending...
+                </span>
+              ) : (
+                "Send Message"
+              )}
             </button>
           </form>
         )}

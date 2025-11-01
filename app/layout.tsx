@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 import "./globals.css";
 import Script from "next/script";
 
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Ranj Sidhu - Software Engineer",
+        alt: "Ranj Sidhu — Portfolio",
       },
     ],
     locale: "en_UK",
@@ -104,11 +104,9 @@ export default function RootLayout({
           href="/feed.xml"
         />
         <meta name="theme-color" content="#000000" />
-        <Script
-          id="json-ld"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <Script id="json-ld" type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

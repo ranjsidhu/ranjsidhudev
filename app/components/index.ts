@@ -1,19 +1,19 @@
-import Layout from "./Layout";
-import Navbar from "./Navbar";
-import TechTag from "./TechTag";
-import Project from "./Project";
-import ProjectDetails from "./ProjectDetails";
 import ComingSoonPage from "./ComingSoon";
 import FeaturedProject from "./FeaturedProject";
-import Socials from "./Socials"
+import Layout from "./Layout";
+import Navbar from "./Navbar";
+import Project from "./Project";
+import ProjectDetails from "./ProjectDetails";
+import Socials from "./Socials";
+import TechTag from "./TechTag";
 
 export {
-  Layout,
-  Navbar,
-  TechTag,
-  Project,
-  ProjectDetails,
   ComingSoonPage,
   FeaturedProject,
-  Socials
+  Layout,
+  Navbar,
+  Project,
+  ProjectDetails,
+  Socials,
+  TechTag,
 };

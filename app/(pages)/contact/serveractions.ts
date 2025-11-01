@@ -1,22 +1,22 @@
 "use server";
 
-import { ContactDetails } from "@/types";
+import type { ContactDetails } from "@/types";
 
 export async function submitContactForm(details: ContactDetails) {
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_SITE_URL + "/api/contact",
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/contact`,
       {
         method: "POST",
         body: JSON.stringify(details),
-      }
+      },
     );
     const data = await response.json();
     return { success: true, data };
-  } catch (error: any) {
+  } catch (error: unknown) {
     return {
       success: false,
-      error: error.message,
+      error: (error as Error).message,
       data: null,
     };
   }

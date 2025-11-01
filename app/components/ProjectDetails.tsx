@@ -1,12 +1,12 @@
-import type { ProjectDetailsProps } from "@/types";
 import Link from "next/link";
+import type { ProjectDetailsProps } from "@/types";
 
 export default function ProjectDetails({
   title,
   tagline,
   description,
   benefits,
-  role,
+  work,
   url,
 }: ProjectDetailsProps) {
   return (
@@ -84,7 +84,7 @@ export default function ProjectDetails({
             data-testid="project-details-role-desc"
             className="text-black/80 text-lg text-center mb-2"
           >
-            {role}
+            {work}
           </p>
         </div>
 
