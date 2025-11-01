@@ -1,5 +1,17 @@
+import type { Metadata } from "next";
 import { Project } from "@/app/components";
 import { PROJECTS } from "@/constants";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Explore my portfolio of bespoke web solutions and software projects, including recruitment systems and educational platforms.",
+  openGraph: {
+    title: "Projects | Ranj Sidhu",
+    description:
+      "Featured projects including Stellar Recruitment and Tutoring To Success, showcasing expertise in custom web development and software solutions.",
+  },
+};
 
 export default function ProjectsPage() {
   return (

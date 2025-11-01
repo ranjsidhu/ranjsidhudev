@@ -1,0 +1,10 @@
+/* TEAM */
+Developer: Ranj Sidhu
+Contact: ranj@ranjsidhu.dev
+From: United Kingdom
+
+/* SITE */
+Last update: 2025/05/28
+Language: English
+Doctype: HTML5
+IDE: Visual Studio Code 
