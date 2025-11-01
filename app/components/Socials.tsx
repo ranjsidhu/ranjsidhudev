@@ -1,6 +1,6 @@
-import type { SocialProps } from "@/types";
-import { FaInstagram, FaLinkedin, FaEnvelope, FaGithub } from "react-icons/fa";
 import Link from "next/link";
+import { FaEnvelope, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import type { SocialProps } from "@/types";
 
 export default function Socials({ size }: SocialProps) {
   return (

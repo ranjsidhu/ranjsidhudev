@@ -9,14 +9,14 @@ export async function submitContactForm(details: ContactDetails) {
       {
         method: "POST",
         body: JSON.stringify(details),
-      }
+      },
     );
     const data = await response.json();
     return { success: true, data };
-  } catch (error: any) {
+  } catch (error: unknown) {
     return {
       success: false,
-      error: error.message,
+      error: (error as Error).message,
       data: null,
     };
   }

@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { FeaturedProject, Socials } from "../components";
+import Link from "next/link";
 import { homepageSkills } from "@/constants";
+import { FeaturedProject, Socials } from "../components";
 
 export default function HomePage() {
   return (

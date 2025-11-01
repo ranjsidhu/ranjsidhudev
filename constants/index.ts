@@ -1,5 +1,5 @@
-export * from "./navbar";
 export * from "./contact";
+export * from "./navbar";
 export * from "./projects";
 
 const homepageSkills = [

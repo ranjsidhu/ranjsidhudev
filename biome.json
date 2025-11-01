@@ -1,48 +1,44 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.3.2/schema.json",
   "vcs": {
-    "enabled": false,
+    "enabled": true,
     "clientKind": "git",
-    "useIgnoreFile": false
+    "useIgnoreFile": true
   },
   "files": {
-    "ignoreUnknown": false,
+    "ignoreUnknown": true,
     "includes": [
       "**",
       "!**/node_modules",
       "!**/.next",
       "!**/generated",
-      "!**/coverage"
+      "!**/coverage",
+      "!jest.setup.ts",
+      "!jest.config.ts",
+      "!commitlint.config.js",
+      "!next.config.ts"
     ]
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "tab"
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf"
   },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
-      "correctness": {
-        "noUnusedVariables": "error",
-        "noUnusedImports": "error",
-        "useUniqueElementIds": "off"
-      },
       "suspicious": {
-        "noExplicitAny": "off",
-        "noUnknownAtRules": "off",
-        "useIterableCallbackReturn": "off",
-        "noArrayIndexKey": "off"
+        "noUnknownAtRules": "off"
       }
-    }
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "double"
+    },
+    "domains": {
+      "next": "recommended",
+      "react": "recommended"
     }
   },
   "assist": {
-    "enabled": true,
     "actions": {
       "source": {
         "organizeImports": "on"
