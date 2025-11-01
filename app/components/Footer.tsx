@@ -1,5 +1,5 @@
-import { Socials } from "@/app/components";
 import Link from "next/link";
+import { Socials } from "@/app/components";
 
 export default function Footer() {
   return (

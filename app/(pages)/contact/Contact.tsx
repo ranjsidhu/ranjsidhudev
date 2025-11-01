@@ -3,8 +3,8 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { ENQUIRY_OPTIONS, initialForm, validateEmail } from "@/constants";
-import { submitContactForm } from "./serveractions";
 import type { ContactDetails } from "@/types";
+import { submitContactForm } from "./serveractions";
 
 export default function Contact() {
   const [form, setForm] = useState<ContactDetails>(initialForm);
@@ -14,7 +14,7 @@ export default function Contact() {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,8 +26,8 @@ export default function Contact() {
     try {
       setIsSubmitting(true);
       await submitContactForm(form);
-    } catch (error: any) {
-      console.error("Error submitting form:", error.message);
+    } catch (error: unknown) {
+      console.error("Error submitting form:", (error as Error).message);
       toast.error("There was an error submitting the form. Please try again.");
     } finally {
       setSubmitted(true);

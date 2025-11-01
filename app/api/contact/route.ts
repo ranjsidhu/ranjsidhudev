@@ -1,7 +1,7 @@
-import type { ContactDetails } from "@/types";
 import { type NextRequest, NextResponse } from "next/server";
-import { formatEmail } from "./emailtemplate";
+import type { ContactDetails } from "@/types";
 import { sendEmail } from "../utils/sendEmail";
+import { formatEmail } from "./emailtemplate";
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     const html = formatEmail(body, "New Contact Form Submission");
     await sendEmail(body.email, "New Contact Form Submission", html);
     return NextResponse.json({ message: "Form submitted successfully" });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: (error as Error).message });
   }
 }

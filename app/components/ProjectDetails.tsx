@@ -1,5 +1,5 @@
-import type { ProjectDetailsProps } from "@/types";
 import Link from "next/link";
+import type { ProjectDetailsProps } from "@/types";
 
 export default function ProjectDetails({
   title,
