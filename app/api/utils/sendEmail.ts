@@ -39,7 +39,7 @@ const sendEmail = async (replyTo: string, subject: string, html: string) => {
     }
     if (!ADMIN_DESTINATION_EMAIL) {
       throw new Error(
-        "ADMIN_DESTINATION_EMAIL environment variable is required"
+        "ADMIN_DESTINATION_EMAIL environment variable is required",
       );
     }
 
@@ -64,8 +64,8 @@ const sendEmail = async (replyTo: string, subject: string, html: string) => {
       },
     });
     await getSESClient().send(command);
-  } catch (error: any) {
-    console.log("Error sending email:", error.message);
+  } catch (error: unknown) {
+    console.log("Error sending email:", (error as Error).message);
   }
 };
 
