@@ -12,7 +12,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@aws-sdk/client-sesv2": "3.966.0",
+    "@aws-sdk/client-sesv2": "3.971.0",
     "@tailwindcss/postcss": "4.1.18",
     "lucide-react": "0.562.0",
     "next": "16.1.1",
