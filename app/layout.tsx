@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ranjsidhu.dev"),
   title: {
-    default: "Ranj Sidhu | Software Engineer",
+    default: "Ranj Sidhu",
     template: "%s | Ranj Sidhu",
   },
   description:
