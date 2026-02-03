@@ -7,8 +7,16 @@ import type { ContactDetails } from "@/types";
 export async function submitContactForm(details: ContactDetails) {
   try {
     const html = formatEmail(details, "New Contact Form Submission");
-    await sendEmail(details.email, "New Contact Form Submission", html);
-    return { success: true, data: { message: "Form submitted successfully" } };
+    const res = await sendEmail(
+      details.email,
+      "New Contact Form Submission",
+      html,
+    );
+    console.log("🚀 ~ submitContactForm ~ res:", res);
+    return {
+      success: true,
+      data: { message: "Form submitted successfully", res },
+    };
   } catch (error: unknown) {
     return {
       success: false,

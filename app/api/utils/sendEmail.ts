@@ -63,7 +63,8 @@ const sendEmail = async (replyTo: string, subject: string, html: string) => {
         },
       },
     });
-    await getSESClient().send(command);
+    const res = await getSESClient().send(command);
+    return res;
   } catch (error: unknown) {
     console.log("Error sending email:", (error as Error).message);
   }
