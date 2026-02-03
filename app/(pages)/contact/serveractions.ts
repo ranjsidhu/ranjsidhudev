@@ -1,18 +1,22 @@
 "use server";
 
+import { formatEmail } from "@/app/api/contact/emailtemplate";
+import { sendEmail } from "@/app/api/utils/sendEmail";
 import type { ContactDetails } from "@/types";
 
 export async function submitContactForm(details: ContactDetails) {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/contact`,
-      {
-        method: "POST",
-        body: JSON.stringify(details),
-      },
+    const html = formatEmail(details, "New Contact Form Submission");
+    const res = await sendEmail(
+      details.email,
+      "New Contact Form Submission",
+      html,
     );
-    const data = await response.json();
-    return { success: true, data };
+    console.log("🚀 ~ submitContactForm ~ res:", res);
+    return {
+      success: true,
+      data: { message: "Form submitted successfully", res },
+    };
   } catch (error: unknown) {
     return {
       success: false,
