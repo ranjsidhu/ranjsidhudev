@@ -6,19 +6,19 @@ export default function Project({ title, slug, summary, tech }: ProjectProps) {
   return (
     <div
       data-testid="project-container"
-      className="border border-black/10 rounded-2xl shadow-sm bg-white p-8 flex flex-col md:flex-row md:items-center md:justify-between hover:shadow-md transition group"
+      className="bg-[#111] border border-white/10 rounded-2xl p-8 flex flex-col md:flex-row md:items-center md:justify-between hover:border-white/20 transition-all duration-300 group"
     >
       <div className="flex-1">
         <Link
           href={`/projects/${slug}`}
           data-testid="project-slug-link"
-          className="text-2xl font-light text-black mb-2 group-hover:underline hover:cursor-pointer transition"
+          className="text-2xl font-light text-white mb-2 group-hover:text-white/80 hover:cursor-pointer transition"
         >
           {title}
         </Link>
         <p
           data-testid="project-summary"
-          className="text-black/70 mb-4 text-base md:text-lg"
+          className="text-white/40 mb-4 text-base md:text-lg"
         >
           {summary}
         </p>
@@ -32,7 +32,7 @@ export default function Project({ title, slug, summary, tech }: ProjectProps) {
         <Link
           href={`/projects/${slug}`}
           data-testid="project-link"
-          className="px-6 py-2 rounded-full bg-black text-white font-light tracking-widest uppercase shadow-sm hover:bg-black/80 transition text-sm"
+          className="px-6 py-2 rounded-full border border-white/20 text-white font-light tracking-widest uppercase hover:bg-white/5 transition text-sm"
         >
           View Details
         </Link>
