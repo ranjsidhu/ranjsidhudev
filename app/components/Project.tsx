@@ -28,7 +28,7 @@ export default function Project({ title, slug, summary, tech }: ProjectProps) {
           ))}
         </div>
       </div>
-      <div className="mt-6 md:mt-0 md:ml-8 flex-shrink-0 flex items-center">
+      <div className="mt-6 md:mt-0 md:ml-8 shrink-0 flex items-center">
         <Link
           href={`/projects/${slug}`}
           data-testid="project-link"

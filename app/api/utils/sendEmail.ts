@@ -1,4 +1,5 @@
 import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
+import logger from "@/lib/logger";
 
 // Lazy initialization of SES client
 let client: SESv2Client | null = null;
@@ -25,11 +26,14 @@ const getSESClient = () => {
         secretAccessKey: AWS_SECRET_ACCESS_KEY,
       },
     });
+    logger.info("SES client initialized");
   }
   return client;
 };
 
 const sendEmail = async (replyTo: string, subject: string, html: string) => {
+  logger.info({ subject, replyTo }, "Sending email via SES");
+
   try {
     const { SENDER_EMAIL, ADMIN_DESTINATION_EMAIL } = process.env;
 
@@ -64,9 +68,16 @@ const sendEmail = async (replyTo: string, subject: string, html: string) => {
       },
     });
     const res = await getSESClient().send(command);
+    logger.info(
+      { messageId: res.MessageId },
+      "Email sent successfully via SES",
+    );
     return res;
   } catch (error: unknown) {
-    console.log("Error sending email:", (error as Error).message);
+    logger.error(
+      { err: error, subject, replyTo },
+      "Failed to send email via SES",
+    );
   }
 };
 
