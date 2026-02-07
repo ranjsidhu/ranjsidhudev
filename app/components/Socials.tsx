@@ -10,34 +10,34 @@ export default function Socials({ size }: SocialProps) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram"
-        className="hover:opacity-70 transition"
+        className="text-white/60 hover:text-white transition-colors duration-200"
       >
-        <FaInstagram size={size} color="#000" />
+        <FaInstagram size={size} />
       </Link>
       <Link
         href="https://www.linkedin.com/in/ranjsidhu/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
-        className="hover:opacity-70 transition"
+        className="text-white/60 hover:text-white transition-colors duration-200"
       >
-        <FaLinkedin size={size} color="#000" />
+        <FaLinkedin size={size} />
       </Link>
       <Link
         href="mailto:ranj@ranjsidhu.dev"
         aria-label="Email"
-        className="hover:opacity-70 transition"
+        className="text-white/60 hover:text-white transition-colors duration-200"
       >
-        <FaEnvelope size={size} color="#000" />
+        <FaEnvelope size={size} />
       </Link>
       <Link
         target="_blank"
         rel="noopener noreferrer"
         href="https://github.com/ranjsidhu"
         aria-label="GitHub"
-        className="hover:opacity-70 transition"
+        className="text-white/60 hover:text-white transition-colors duration-200"
       >
-        <FaGithub size={size} color="#000" />
+        <FaGithub size={size} />
       </Link>
     </>
   );
