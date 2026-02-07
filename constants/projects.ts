@@ -12,6 +12,7 @@ const PROJECTS = [
       "Recruiter Backend",
       "User Management",
     ],
+    url: "https://www.stellar-recruitment.co.uk/",
   },
   {
     slug: "tutoring-to-success",
@@ -19,6 +20,7 @@ const PROJECTS = [
     summary:
       "A modern, static website for a local tutoring agency. Designed to advertise services and facilitate contact, it features a clean, approachable interface and is powered by Next.js, Tailwind CSS, and Express for backend needs.",
     tech: ["Next.js", "Tailwind CSS", "Express", "Static Website"],
+    url: "https://www.tutoringtosuccess.co.uk/",
   },
 ];
 
