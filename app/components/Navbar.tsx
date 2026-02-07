@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link
               href="/"
               className="text-xl font-light tracking-widest text-black"
@@ -49,7 +49,7 @@ const Navbar = () => {
                 >
                   {link.label}
                   {pathname === link.href && (
-                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-black/20 transform scale-x-100 transition-transform duration-200" />
+                    <span className="absolute bottom-0 left-0 w-full h-px bg-black/20 transform scale-x-100 transition-transform duration-200" />
                   )}
                 </Link>
               ))}
@@ -68,17 +68,17 @@ const Navbar = () => {
               <span className="sr-only">Open main menu</span>
               <div className="w-6 h-6 flex flex-col justify-center items-center">
                 <span
-                  className={`block w-6 h-[1px] bg-current transform transition duration-300 ${
+                  className={`block w-6 h-px bg-current transform transition duration-300 ${
                     isOpen ? "rotate-45 translate-y-0.5" : "-translate-y-1"
                   }`}
                 />
                 <span
-                  className={`block w-6 h-[1px] bg-current transition duration-300 ${
+                  className={`block w-6 h-px bg-current transition duration-300 ${
                     isOpen ? "opacity-0" : "opacity-100"
                   }`}
                 />
                 <span
-                  className={`block w-6 h-[1px] bg-current transform transition duration-300 ${
+                  className={`block w-6 h-px bg-current transform transition duration-300 ${
                     isOpen ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
                   }`}
                 />

@@ -85,7 +85,7 @@ const ComingSoonPage: React.FC = () => {
             Coming Soon
           </h1>
 
-          <div className="h-[1px] w-24 bg-black/20 mx-auto my-8"></div>
+          <div className="h-px w-24 bg-black/20 mx-auto my-8"></div>
 
           <div className="inline-flex items-center py-2 px-4 border border-black/10 rounded-full">
             <div className="h-2 w-2 bg-black rounded-full animate-pulse mr-3"></div>
@@ -108,7 +108,7 @@ const ComingSoonPage: React.FC = () => {
       {/* Subtle background effect */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 rounded-full"
           style={{
             background:
               "radial-gradient(circle, rgba(0,0,0,0.01) 0%, rgba(255,255,255,0) 70%)",

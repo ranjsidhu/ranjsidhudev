@@ -1,11 +1,9 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { homepageSkills } from "@/constants";
 import { FeaturedProject, Socials } from "../components";
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Hero Section */}
