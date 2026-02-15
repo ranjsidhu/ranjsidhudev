@@ -23,5 +23,8 @@ jobs:
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Deploy Project Artifacts to Vercel
+      - name: Deploy Project Artifacts to Vercel (Preview)
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+        
+      - name: Deploy to dev.ranjsidhu.dev
+        run: vercel deploy --prebuilt --alias dev.ranjsidhu.dev --token=${{ secrets.VERCEL_TOKEN }}
