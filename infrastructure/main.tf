@@ -45,8 +45,9 @@ resource "aws_ecr_repository" "app" {
   }
 
   tags = {
-    Name    = "${var.project_name}-ecr"
-    Project = var.project_name
+    Name        = "${var.project_name}-ecr"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
@@ -79,8 +80,9 @@ resource "aws_ecs_cluster" "main" {
   }
 
   tags = {
-    Name    = "${var.project_name}-cluster"
-    Project = var.project_name
+    Name        = "${var.project_name}-cluster"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
@@ -111,8 +113,9 @@ resource "aws_cloudwatch_log_group" "app" {
   retention_in_days = 7
 
   tags = {
-    Name    = "${var.project_name}-logs"
-    Project = var.project_name
+    Name        = "${var.project_name}-logs"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
@@ -132,8 +135,9 @@ resource "aws_iam_role" "ecs_task_execution_role" {
   })
 
   tags = {
-    Name    = "${var.project_name}-ecs-task-execution-role"
-    Project = var.project_name
+    Name        = "${var.project_name}-ecs-task-execution-role"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
@@ -158,8 +162,9 @@ resource "aws_iam_role" "ecs_task_role" {
   })
 
   tags = {
-    Name    = "${var.project_name}-ecs-task-role"
-    Project = var.project_name
+    Name        = "${var.project_name}-ecs-task-role"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
@@ -209,8 +214,9 @@ resource "aws_ecs_task_definition" "app" {
   }])
 
   tags = {
-    Name    = "${var.project_name}-task"
-    Project = var.project_name
+    Name        = "${var.project_name}-task"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
@@ -245,8 +251,9 @@ resource "aws_security_group" "alb" {
   }
 
   tags = {
-    Name    = "${var.project_name}-alb-sg"
-    Project = var.project_name
+    Name        = "${var.project_name}-alb-sg"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
@@ -273,8 +280,9 @@ resource "aws_security_group" "ecs" {
   }
 
   tags = {
-    Name    = "${var.project_name}-ecs-sg"
-    Project = var.project_name
+    Name        = "${var.project_name}-ecs-sg"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
@@ -289,8 +297,9 @@ resource "aws_lb" "main" {
   enable_deletion_protection = false
 
   tags = {
-    Name    = "${var.project_name}-alb"
-    Project = var.project_name
+    Name        = "${var.project_name}-alb"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
@@ -316,47 +325,42 @@ resource "aws_lb_target_group" "app" {
   deregistration_delay = 30
 
   tags = {
-    Name    = "${var.project_name}-targets"
-    Project = var.project_name
+    Name        = "${var.project_name}-targets"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
-# HTTP Listener (redirect to HTTPS if certificate exists)
+# HTTP Listener (redirect to HTTPS)
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.main.arn
   port              = 80
   protocol          = "HTTP"
 
   default_action {
-    type = var.certificate_arn != "" || var.domain_name != "" ? "redirect" : "forward"
+    type = "redirect"
 
-    dynamic "redirect" {
-      for_each = var.certificate_arn != "" || var.domain_name != "" ? [1] : []
-      content {
-        port        = "443"
-        protocol    = "HTTPS"
-        status_code = "HTTP_301"
-      }
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
     }
-
-    target_group_arn = var.certificate_arn == "" && var.domain_name == "" ? aws_lb_target_group.app.arn : null
   }
 
   tags = {
-    Name    = "${var.project_name}-http-listener"
-    Project = var.project_name
+    Name        = "${var.project_name}-http-listener"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
-# HTTPS Listener (if certificate provided)
+# HTTPS Listener
 resource "aws_lb_listener" "https" {
-  count = var.certificate_arn != "" || var.domain_name != "" ? 1 : 0
-
   load_balancer_arn = aws_lb.main.arn
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-Res-2021-06"
-  certificate_arn   = var.certificate_arn != "" ? var.certificate_arn : aws_acm_certificate.main[0].arn
+  certificate_arn   = var.certificate_arn
 
   default_action {
     type             = "forward"
@@ -364,8 +368,9 @@ resource "aws_lb_listener" "https" {
   }
 
   tags = {
-    Name    = "${var.project_name}-https-listener"
-    Project = var.project_name
+    Name        = "${var.project_name}-https-listener"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 
@@ -415,8 +420,9 @@ resource "aws_ecs_service" "app" {
   ]
 
   tags = {
-    Name    = "${var.project_name}-service"
-    Project = var.project_name
+    Name        = "${var.project_name}-service"
+    Project     = var.project_name
+    application = "rsdev"
   }
 }
 

@@ -1,8 +1,20 @@
 import { MapPin, Target, Wrench } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimateOnScroll, Socials } from "@/app/components";
 import { homepageSkills } from "@/constants";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about Ranj Sidhu, a software engineer specialising in user-centric web development with expertise in Next.js, React, and TypeScript.",
+  openGraph: {
+    title: "About | Ranj Sidhu",
+    description:
+      "Discover more about Ranj Sidhu's background, skills, and approach to software development.",
+  },
+};
 
 export default function AboutPage() {
   return (

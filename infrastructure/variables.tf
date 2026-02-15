@@ -9,26 +9,19 @@ variable "project_name" {
   type        = string
 }
 
+variable "certificate_arn" {
+  description = "ARN of existing ACM certificate for HTTPS"
+  type        = string
+}
+
 variable "domain_name" {
-  description = "Domain name for the application (optional)"
+  description = "Domain name for the application"
   type        = string
   default     = ""
 }
 
 variable "subdomain" {
   description = "Subdomain for the application (optional)"
-  type        = string
-  default     = ""
-}
-
-variable "certificate_arn" {
-  description = "ARN of existing ACM certificate (optional)"
-  type        = string
-  default     = ""
-}
-
-variable "hosted_zone_id" {
-  description = "Route53 Hosted Zone ID (required if domain_name is set and certificate_arn is not)"
   type        = string
   default     = ""
 }

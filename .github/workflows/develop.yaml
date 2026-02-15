@@ -1,4 +1,4 @@
-name: Vercel Develop Deployment
+name: Dev Environment Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -9,7 +9,7 @@ on:
       - develop
 
 jobs:
-  Deploy-Preview:
+  Deploy-Dev:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,5 +23,5 @@ jobs:
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Deploy Project Artifacts to Vercel
+      - name: Deploy Project Artifacts to Vercel (Preview)
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
