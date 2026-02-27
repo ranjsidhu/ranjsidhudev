@@ -6,12 +6,18 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 4.0"
+    }
   }
 }
 
 provider "aws" {
   region = var.aws_region
 }
+
+provider "cloudflare" {}
 
 # Data sources
 data "aws_caller_identity" "current" {}
@@ -29,6 +35,53 @@ data "aws_subnets" "default" {
 
 data "aws_availability_zones" "available" {
   state = "available"
+}
+
+locals {
+  app_fqdn                  = var.subdomain != "" ? "${var.subdomain}.${var.domain_name}" : var.domain_name
+  certificate_domains       = var.subdomain != "" ? [var.domain_name, "${var.subdomain}.${var.domain_name}"] : [var.domain_name]
+  listener_certificate_arn  = aws_acm_certificate_validation.app[0].certificate_arn
+}
+
+# ACM Certificate 
+resource "aws_acm_certificate" "app" {
+  count             = var.domain_name != "" ? 1 : 0
+  domain_name       = local.certificate_domains[0]
+  subject_alternative_names = slice(local.certificate_domains, 1, length(local.certificate_domains))
+  validation_method = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  tags = {
+    application = "rsdev"
+    Name        = "${var.project_name}-acm-cert"
+  }
+}
+
+resource "cloudflare_record" "acm_validation" {
+  for_each = length(aws_acm_certificate.app) > 0 ? {
+    for domain in local.certificate_domains : domain => {
+      name    = trimsuffix([for dvo in aws_acm_certificate.app[0].domain_validation_options : dvo.resource_record_name if dvo.domain_name == domain][0], ".")
+      type    = [for dvo in aws_acm_certificate.app[0].domain_validation_options : dvo.resource_record_type if dvo.domain_name == domain][0]
+      content = trimsuffix([for dvo in aws_acm_certificate.app[0].domain_validation_options : dvo.resource_record_value if dvo.domain_name == domain][0], ".")
+    }
+  } : {}
+
+  zone_id         = var.cloudflare_zone_id
+  name            = each.value.name
+  type            = each.value.type
+  content         = each.value.content
+  ttl             = 1
+  proxied         = false
+  allow_overwrite = true
+}
+
+resource "aws_acm_certificate_validation" "app" {
+  count                   = length(aws_acm_certificate.app) > 0 ? 1 : 0
+  certificate_arn         = aws_acm_certificate.app[0].arn
+  validation_record_fqdns = [for record in cloudflare_record.acm_validation : record.hostname]
 }
 
 # ECR Repository
@@ -360,7 +413,7 @@ resource "aws_lb_listener" "https" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-Res-2021-06"
-  certificate_arn   = var.certificate_arn
+  certificate_arn   = local.listener_certificate_arn
 
   default_action {
     type             = "forward"

@@ -9,9 +9,16 @@ variable "project_name" {
   type        = string
 }
 
-variable "certificate_arn" {
-  description = "ARN of existing ACM certificate for HTTPS"
+variable "use_managed_certificate" {
+  description = "Use Terraform-managed ACM certificate for ALB HTTPS listener"
+  type        = bool
+  default     = true
+}
+
+variable "cloudflare_zone_id" {
+  description = "Cloudflare zone ID for DNS validation records"
   type        = string
+  default     = ""
 }
 
 variable "domain_name" {
