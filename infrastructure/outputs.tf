@@ -39,3 +39,25 @@ output "cloudwatch_log_group" {
   description = "CloudWatch log group name"
   value       = aws_cloudwatch_log_group.app.name
 }
+
+output "acm_certificate_arn" {
+  description = "Managed ACM certificate ARN (if created)"
+  value       = length(aws_acm_certificate.app) > 0 ? aws_acm_certificate.app[0].arn : null
+}
+
+output "acm_dns_validation_records" {
+  description = "DNS records required to validate ACM certificate in your DNS provider"
+  value = length(aws_acm_certificate.app) > 0 ? [
+    for dvo in aws_acm_certificate.app[0].domain_validation_options : {
+      domain_name           = dvo.domain_name
+      resource_record_name  = dvo.resource_record_name
+      resource_record_type  = dvo.resource_record_type
+      resource_record_value = dvo.resource_record_value
+    }
+  ] : []
+}
+
+output "listener_certificate_arn" {
+  description = "Certificate ARN currently selected for ALB HTTPS listener"
+  value       = local.listener_certificate_arn
+}
