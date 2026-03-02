@@ -14,7 +14,7 @@
   "dependencies": {
     "@aws-sdk/client-sesv2": "3.1000.0",
     "@tailwindcss/postcss": "4.2.1",
-    "lucide-react": "0.564.0",
+    "lucide-react": "0.575.0",
     "next": "16.1.6",
     "pino": "10.3.1",
     "pino-pretty": "13.1.3",
