@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.RELEASE_PAT }}
+    outputs:
+      merged: ${{ steps.wait_merge.outputs.merged }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -66,3 +68,24 @@ jobs:
       - name: Enable auto-merge
         if: steps.release_pr.outputs.number != ''
         run: gh pr merge --auto --merge "${{ steps.release_pr.outputs.number }}"
+
+      - name: Wait for PR to merge
+        id: wait_merge
+        if: steps.release_pr.outputs.number != ''
+        run: |
+          pr_number="${{ steps.release_pr.outputs.number }}"
+          for i in $(seq 1 30); do
+            state=$(gh pr view "$pr_number" --json state --jq '.state')
+            if [[ "$state" == "MERGED" ]]; then
+              echo "merged=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "merged=false" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: release
+    if: needs.release.outputs.merged == 'true'
+    uses: ./.github/workflows/aws-prod.yaml
+    secrets: inherit
