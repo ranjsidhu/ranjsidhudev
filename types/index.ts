@@ -51,11 +51,11 @@ type ProjectRowProps = Readonly<{
 
 export type {
   ContactDetails,
-  LayoutProps,
-  TechTagProps,
-  ProjectProps,
-  ProjectDetailsProps,
   FeaturedProjectProps,
-  SocialProps,
+  LayoutProps,
+  ProjectDetailsProps,
+  ProjectProps,
   ProjectRowProps,
+  SocialProps,
+  TechTagProps,
 };
