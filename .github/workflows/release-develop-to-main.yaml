@@ -87,5 +87,5 @@ jobs:
   deploy:
     needs: release
     if: needs.release.outputs.merged == 'true'
-    uses: ./.github/workflows/aws-prod.yaml
+    uses: ./.github/workflows/vercel-prod.yaml
     secrets: inherit
