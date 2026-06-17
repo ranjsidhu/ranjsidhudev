@@ -41,40 +41,40 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
-      {/* ── Header with animated gradient ── */}
+      {/* ── Header ── */}
       <section className="relative overflow-hidden">
         <div className="animated-gradient-bg absolute inset-0" />
+        <div className="absolute top-1/3 -right-32 w-96 h-96 bg-rose-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 50% 50%, #fff 1px, transparent 1px)",
+              "radial-gradient(circle at 50% 50%, #f43f5e 1px, transparent 1px)",
             backgroundSize: "24px 24px",
           }}
         />
 
         <div className="relative max-w-6xl mx-auto px-6 pt-28 pb-20">
-          <p className="text-white/30 text-xs uppercase tracking-[0.3em] mb-3">
+          <p className="text-rose-400/70 text-xs uppercase tracking-[0.3em] mb-3">
             Say Hello
           </p>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-wide mb-4">
             Get in Touch
           </h1>
-          <p className="text-white/40 text-lg max-w-xl leading-relaxed">
+          <p className="text-slate-400 text-lg max-w-xl leading-relaxed">
             Have a project in mind, want to collaborate, or just want to say
             hello? I&apos;d love to hear from you.
           </p>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
+        <div className="absolute bottom-0 left-0 right-0 gradient-divider" />
       </section>
 
       {/* ── Split layout ── */}
       <section className="max-w-6xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-[1fr_1.3fr] gap-12 md:gap-16 items-start">
-          {/* Left column — branding & info */}
           <div className="flex flex-col items-center md:items-start md:sticky md:top-24">
             <div className="relative mb-8">
-              <div className="absolute inset-0 rounded-full bg-purple-500/5 blur-3xl" />
+              <div className="absolute inset-0 rounded-full bg-violet-500/10 blur-3xl" />
               <Image
                 src="/colournobg.png"
                 alt="Ranj Sidhu"
@@ -84,13 +84,13 @@ export default function Contact() {
               />
             </div>
 
-            <div className="group flex items-center gap-3 mb-6 p-3 -mx-3 rounded-xl hover:bg-white/2 transition-colors duration-300">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors duration-300">
-                <Mail className="w-4 h-4 text-white/50" />
+            <div className="group flex items-center gap-3 mb-6 p-3 -mx-3 rounded-xl hover:bg-violet-500/5 transition-colors duration-300">
+              <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center group-hover:bg-violet-500/20 transition-colors duration-300">
+                <Mail className="w-4 h-4 text-violet-400" />
               </div>
               <a
                 href="mailto:ranj@ranjsidhu.dev"
-                className="text-white/50 hover:text-white text-sm transition-colors duration-200"
+                className="text-slate-400 hover:text-violet-300 text-sm transition-colors duration-200"
               >
                 ranj@ranjsidhu.dev
               </a>
@@ -101,17 +101,17 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right column — form */}
-          <div className="bg-white/2 border border-white/5 rounded-2xl p-8 md:p-10 hover:border-white/10 transition-colors duration-500">
+          {/* Form */}
+          <div className="glass-card rounded-2xl p-8 md:p-10 transition-colors duration-500">
             {submitted ? (
               <div className="text-center py-16">
-                <div className="w-16 h-16 rounded-full bg-emerald-400/10 flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl">&#10003;</span>
+                <div className="w-16 h-16 rounded-full bg-emerald-500/15 flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl text-emerald-400">&#10003;</span>
                 </div>
                 <h2 className="text-2xl font-light text-white mb-3">
                   Thank you!
                 </h2>
-                <p className="text-white/40">
+                <p className="text-slate-400">
                   Your message has been received. I&apos;ll get back to you
                   soon.
                 </p>
@@ -125,7 +125,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-white/40 mb-2 text-xs font-light tracking-wider uppercase"
+                    className="block text-violet-300/60 mb-2 text-xs font-light tracking-wider uppercase"
                   >
                     Name
                   </label>
@@ -136,14 +136,14 @@ export default function Contact() {
                     required
                     value={form.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/3 border border-white/5 rounded-xl text-white placeholder-white/15 focus:outline-none focus:border-white/20 focus:bg-white/5 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/3 border border-violet-500/15 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-white/40 mb-2 text-xs font-light tracking-wider uppercase"
+                    className="block text-violet-300/60 mb-2 text-xs font-light tracking-wider uppercase"
                   >
                     Email
                   </label>
@@ -154,14 +154,14 @@ export default function Contact() {
                     required
                     value={form.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/3 border border-white/5 rounded-xl text-white placeholder-white/15 focus:outline-none focus:border-white/20 focus:bg-white/5 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/3 border border-violet-500/15 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300"
                     placeholder="Your email"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="enquiryType"
-                    className="block text-white/40 mb-2 text-xs font-light tracking-wider uppercase"
+                    className="block text-violet-300/60 mb-2 text-xs font-light tracking-wider uppercase"
                   >
                     Enquiry Type
                   </label>
@@ -171,13 +171,13 @@ export default function Contact() {
                     required
                     value={form.enquiryType}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/3 border border-white/5 rounded-xl text-white focus:outline-none focus:border-white/20 focus:bg-white/5 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/3 border border-violet-500/15 rounded-xl text-white focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300"
                   >
                     {ENQUIRY_OPTIONS.map((option) => (
                       <option
                         key={option.value}
                         value={option.label}
-                        className="bg-[#111] text-white"
+                        className="bg-[#0a0118] text-white"
                       >
                         {option.label}
                       </option>
@@ -187,7 +187,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-white/40 mb-2 text-xs font-light tracking-wider uppercase"
+                    className="block text-violet-300/60 mb-2 text-xs font-light tracking-wider uppercase"
                   >
                     Message
                   </label>
@@ -198,7 +198,7 @@ export default function Contact() {
                     rows={5}
                     value={form.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/3 border border-white/5 rounded-xl text-white placeholder-white/15 focus:outline-none focus:border-white/20 focus:bg-white/5 transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-white/3 border border-violet-500/15 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300 resize-none"
                     placeholder="Type your message here..."
                   />
                 </div>
@@ -209,8 +209,8 @@ export default function Contact() {
                   aria-disabled={isSubmitting}
                   className={`w-full py-3.5 rounded-full text-sm font-light tracking-widest uppercase transition-all duration-300 ${
                     isSubmitting
-                      ? "bg-white/50 text-[#0a0a0a] cursor-not-allowed"
-                      : "bg-white text-[#0a0a0a] hover:bg-white/90 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+                      ? "bg-violet-600/50 text-white/70 cursor-not-allowed"
+                      : "bg-gradient-to-r from-violet-600 to-cyan-500 text-white hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-[1.02]"
                   }`}
                 >
                   {isSubmitting ? (
