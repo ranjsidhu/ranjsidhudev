@@ -131,7 +131,10 @@ export default function AboutPage() {
               text: "From UI design to API architecture to deployment and monitoring. I ship features, not just code.",
             },
           ].map((item, i) => {
-            const colorMap: Record<string, { bg: string; icon: string; border: string; glow: string }> = {
+            const colorMap: Record<
+              string,
+              { bg: string; icon: string; border: string; glow: string }
+            > = {
               violet: {
                 bg: "from-violet-500/20 to-violet-500/5",
                 icon: "text-violet-400",
