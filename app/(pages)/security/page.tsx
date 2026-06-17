@@ -1,10 +1,4 @@
-import {
-  CheckCircle,
-  Lock,
-  Mail,
-  Shield,
-  ShieldCheck,
-} from "lucide-react";
+import { CheckCircle, Lock, Mail, Shield, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
 import { AnimateOnScroll } from "@/app/components";
 
@@ -58,9 +52,7 @@ const sections = [
   {
     icon: ShieldCheck,
     title: "What to Expect",
-    paragraphs: [
-      "When you report a security vulnerability, you can expect:",
-    ],
+    paragraphs: ["When you report a security vulnerability, you can expect:"],
     items: [
       "Prompt acknowledgment of your report",
       "Regular updates on the progress of fixing the vulnerability",

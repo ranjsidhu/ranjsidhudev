@@ -78,9 +78,7 @@ export default function Footer() {
                 >
                   ranj@ranjsidhu.dev
                 </a>
-                <span className="text-slate-500 text-sm">
-                  Based in the UK
-                </span>
+                <span className="text-slate-500 text-sm">Based in the UK</span>
               </div>
             </div>
           </div>

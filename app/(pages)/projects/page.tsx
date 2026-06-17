@@ -51,8 +51,7 @@ export default function ProjectsPage() {
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Selected{" "}
-              <span className="gradient-text">Projects</span>
+              Selected <span className="gradient-text">Projects</span>
             </h1>
             <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
               Real-world applications built with modern tech stacks, clean
@@ -77,9 +76,13 @@ export default function ProjectsPage() {
                 href={`/projects/${project.slug}`}
                 className={`group block glass-card rounded-3xl overflow-hidden ${ACCENT_BORDERS[i % ACCENT_BORDERS.length]} transition-all duration-500`}
               >
-                <div className={`grid md:grid-cols-2 ${isEven ? "" : "md:direction-rtl"}`}>
+                <div
+                  className={`grid md:grid-cols-2 ${isEven ? "" : "md:direction-rtl"}`}
+                >
                   {/* Preview side */}
-                  <div className={`relative h-64 md:h-auto md:min-h-[380px] overflow-hidden ${isEven ? "" : "md:order-2"}`}>
+                  <div
+                    className={`relative h-64 md:h-auto md:min-h-[380px] overflow-hidden ${isEven ? "" : "md:order-2"}`}
+                  >
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${ACCENT_GRADIENTS[i % ACCENT_GRADIENTS.length]} z-0`}
                     />
@@ -108,7 +111,9 @@ export default function ProjectsPage() {
                   </div>
 
                   {/* Content side */}
-                  <div className={`p-8 md:p-10 lg:p-12 flex flex-col justify-center ${isEven ? "" : "md:order-1"}`}>
+                  <div
+                    className={`p-8 md:p-10 lg:p-12 flex flex-col justify-center ${isEven ? "" : "md:order-1"}`}
+                  >
                     <span className="text-6xl font-black text-white/5 mb-4 block">
                       {String(i + 1).padStart(2, "0")}
                     </span>
