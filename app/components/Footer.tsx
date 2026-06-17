@@ -1,43 +1,70 @@
 import Link from "next/link";
 import { Socials } from "@/app/components";
+import { navLinks } from "@/constants";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-violet-500/10 bg-[#030014] py-12 px-4 flex flex-col items-center mt-auto relative overflow-hidden">
-      <div className="absolute top-0 left-1/4 w-64 h-32 bg-violet-600/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-0 right-1/4 w-64 h-32 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+    <footer className="relative mt-auto overflow-hidden">
+      <div className="gradient-divider" />
 
-      <div className="w-full max-w-5xl flex flex-col md:flex-row md:justify-between gap-10 md:gap-0 relative">
-        <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
-          <span className="text-white font-light tracking-widest uppercase text-lg mb-2">
-            Ranj Sidhu
-          </span>
-          <span className="text-slate-400 text-xs mb-2">Software Engineer</span>
-          <span className="text-slate-500 text-xs">Based in the UK</span>
-          <span className="text-slate-500 text-xs mt-2">
-            &copy; {new Date().getFullYear()} Ranj Sidhu
-          </span>
-        </div>
+      <div className="bg-[#030014] relative">
+        <div className="absolute top-0 left-1/3 w-[400px] h-[200px] bg-violet-600/5 rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="flex flex-col items-center">
-          <span className="text-violet-300/70 font-medium mb-3 tracking-wider uppercase text-xs">
-            Connect
-          </span>
-          <div className="flex gap-4 mb-3">
-            <Socials size={24} />
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          {/* Top row — branding + nav + socials */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            {/* Brand */}
+            <div>
+              <span className="text-xl font-bold text-white block mb-2">
+                Ranj Sidhu
+              </span>
+              <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
+                Software engineer building polished, production-ready web
+                experiences from the UK.
+              </p>
+            </div>
+
+            {/* Nav */}
+            <div>
+              <span className="text-sm font-medium text-slate-300 block mb-4">
+                Navigation
+              </span>
+              <div className="flex flex-col gap-2.5">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-slate-400 text-sm hover:text-violet-300 transition-colors w-fit"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Connect */}
+            <div>
+              <span className="text-sm font-medium text-slate-300 block mb-4">
+                Connect
+              </span>
+              <div className="flex gap-4 mb-6">
+                <Socials size={20} />
+              </div>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white text-sm font-medium hover:shadow-[0_0_25px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300"
+              >
+                Get in touch &rarr;
+              </Link>
+            </div>
           </div>
-        </div>
 
-        <div className="flex flex-col items-center md:items-start">
-          <span className="text-violet-300/70 font-medium mb-3 tracking-wider uppercase text-xs">
-            Let&apos;s Connect
-          </span>
-          <Link
-            href="/contact"
-            className="px-6 py-2 rounded-full border border-violet-500/30 text-white font-light tracking-widest uppercase hover:bg-violet-500/10 hover:border-violet-400/50 hover:shadow-[0_0_20px_rgba(124,58,237,0.15)] transition-all duration-300 text-sm"
-          >
-            Get in Touch
-          </Link>
+          {/* Bottom bar */}
+          <div className="gradient-divider mb-6" />
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <span>&copy; {new Date().getFullYear()} Ranj Sidhu</span>
+            <span>Designed & built with Next.js</span>
+          </div>
         </div>
       </div>
     </footer>

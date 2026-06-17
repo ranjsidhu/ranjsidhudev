@@ -1,7 +1,6 @@
 "use client";
 
-import { Mail } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight, Mail, MessageSquare, Send } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Socials } from "@/app/components";
@@ -41,27 +40,25 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
-      {/* ── Header ── */}
+      {/* ── Hero — centered, impactful ── */}
       <section className="relative overflow-hidden">
         <div className="animated-gradient-bg absolute inset-0" />
-        <div className="absolute top-1/3 -right-32 w-96 h-96 bg-rose-500/10 rounded-full blur-[120px] pointer-events-none" />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 50% 50%, #f43f5e 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-          }}
-        />
+        <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-rose-500/10 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-violet-600/10 rounded-full blur-[130px] pointer-events-none" />
 
-        <div className="relative max-w-6xl mx-auto px-6 pt-28 pb-20">
-          <p className="text-rose-400/70 text-xs uppercase tracking-[0.3em] mb-3">
-            Say Hello
-          </p>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-wide mb-4">
-            Get in Touch
+        <div className="relative max-w-4xl mx-auto px-6 pt-32 pb-24 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-rose-500/20 bg-rose-500/5 mb-8">
+            <MessageSquare className="w-4 h-4 text-rose-400" />
+            <span className="text-sm text-slate-300 tracking-wide">
+              Say hello
+            </span>
+          </div>
+
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Let&apos;s start a{" "}
+            <span className="gradient-text">conversation</span>
           </h1>
-          <p className="text-slate-400 text-lg max-w-xl leading-relaxed">
+          <p className="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
             Have a project in mind, want to collaborate, or just want to say
             hello? I&apos;d love to hear from you.
           </p>
@@ -69,51 +66,66 @@ export default function Contact() {
         <div className="absolute bottom-0 left-0 right-0 gradient-divider" />
       </section>
 
-      {/* ── Split layout ── */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-[1fr_1.3fr] gap-12 md:gap-16 items-start">
-          <div className="flex flex-col items-center md:items-start md:sticky md:top-24">
-            <div className="relative mb-8">
-              <div className="absolute inset-0 rounded-full bg-violet-500/10 blur-3xl" />
-              <Image
-                src="/colournobg.png"
-                alt="Ranj Sidhu"
-                width={140}
-                height={140}
-                className="logo-invert relative w-28 h-28 md:w-36 md:h-36 object-contain"
-              />
+      {/* ── Quick contact methods + form ── */}
+      <section className="max-w-5xl mx-auto px-6 py-20">
+        {/* Contact cards row */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+          <a
+            href="mailto:ranj@ranjsidhu.dev"
+            className="group glass-card rounded-2xl p-6 hover:border-violet-500/30 transition-all duration-300 flex items-center gap-4"
+          >
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/20 to-violet-500/5 flex items-center justify-center shrink-0">
+              <Mail className="w-5 h-5 text-violet-400" />
             </div>
+            <div>
+              <div className="text-white text-sm font-medium mb-0.5">Email</div>
+              <div className="text-slate-400 text-xs">ranj@ranjsidhu.dev</div>
+            </div>
+          </a>
 
-            <div className="group flex items-center gap-3 mb-6 p-3 -mx-3 rounded-xl hover:bg-violet-500/5 transition-colors duration-300">
-              <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center group-hover:bg-violet-500/20 transition-colors duration-300">
-                <Mail className="w-4 h-4 text-violet-400" />
+          <div className="glass-card rounded-2xl p-6 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center shrink-0">
+              <Send className="w-5 h-5 text-cyan-400" />
+            </div>
+            <div>
+              <div className="text-white text-sm font-medium mb-0.5">
+                Response
               </div>
-              <a
-                href="mailto:ranj@ranjsidhu.dev"
-                className="text-slate-400 hover:text-violet-300 text-sm transition-colors duration-200"
-              >
-                ranj@ranjsidhu.dev
-              </a>
-            </div>
-
-            <div className="flex gap-4">
-              <Socials size={20} />
+              <div className="text-slate-400 text-xs">Within 24 hours</div>
             </div>
           </div>
 
-          {/* Form */}
-          <div className="glass-card rounded-2xl p-8 md:p-10 transition-colors duration-500">
+          <div className="glass-card rounded-2xl p-6 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center shrink-0">
+              <div className="flex gap-1.5">
+                <Socials size={14} />
+              </div>
+            </div>
+            <div>
+              <div className="text-white text-sm font-medium mb-0.5">
+                Socials
+              </div>
+              <div className="text-slate-400 text-xs">Find me everywhere</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main form card */}
+        <div className="glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-violet-500/8 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-cyan-500/5 rounded-full blur-[80px] pointer-events-none" />
+
+          <div className="relative">
             {submitted ? (
               <div className="text-center py-16">
-                <div className="w-16 h-16 rounded-full bg-emerald-500/15 flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl text-emerald-400">&#10003;</span>
+                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl text-emerald-400">&#10003;</span>
                 </div>
-                <h2 className="text-2xl font-light text-white mb-3">
-                  Thank you!
+                <h2 className="text-3xl font-bold text-white mb-3">
+                  Message sent!
                 </h2>
-                <p className="text-slate-400">
-                  Your message has been received. I&apos;ll get back to you
-                  soon.
+                <p className="text-slate-400 text-lg">
+                  Thanks for reaching out. I&apos;ll get back to you soon.
                 </p>
               </div>
             ) : (
@@ -122,48 +134,50 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 autoComplete="off"
               >
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-violet-300/60 mb-2 text-xs font-light tracking-wider uppercase"
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/3 border border-violet-500/15 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-violet-300/60 mb-2 text-xs font-light tracking-wider uppercase"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="text"
-                    required
-                    value={form.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/3 border border-violet-500/15 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300"
-                    placeholder="Your email"
-                  />
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-slate-300 mb-2 text-sm font-medium"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={handleChange}
+                      className="w-full px-5 py-3.5 bg-white/3 border border-violet-500/15 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-slate-300 mb-2 text-sm font-medium"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="text"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
+                      className="w-full px-5 py-3.5 bg-white/3 border border-violet-500/15 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300"
+                      placeholder="Your email"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label
                     htmlFor="enquiryType"
-                    className="block text-violet-300/60 mb-2 text-xs font-light tracking-wider uppercase"
+                    className="block text-slate-300 mb-2 text-sm font-medium"
                   >
-                    Enquiry Type
+                    What&apos;s this about?
                   </label>
                   <select
                     id="enquiryType"
@@ -171,7 +185,7 @@ export default function Contact() {
                     required
                     value={form.enquiryType}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/3 border border-violet-500/15 rounded-xl text-white focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300"
+                    className="w-full px-5 py-3.5 bg-white/3 border border-violet-500/15 rounded-xl text-white focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300"
                   >
                     {ENQUIRY_OPTIONS.map((option) => (
                       <option
@@ -187,7 +201,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-violet-300/60 mb-2 text-xs font-light tracking-wider uppercase"
+                    className="block text-slate-300 mb-2 text-sm font-medium"
                   >
                     Message
                   </label>
@@ -195,11 +209,11 @@ export default function Contact() {
                     id="message"
                     name="message"
                     required
-                    rows={5}
+                    rows={6}
                     value={form.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/3 border border-violet-500/15 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300 resize-none"
-                    placeholder="Type your message here..."
+                    className="w-full px-5 py-3.5 bg-white/3 border border-violet-500/15 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-violet-500/40 focus:bg-violet-500/5 focus:shadow-[0_0_20px_rgba(124,58,237,0.1)] transition-all duration-300 resize-none"
+                    placeholder="Tell me about your project..."
                   />
                 </div>
                 <button
@@ -207,14 +221,14 @@ export default function Contact() {
                   disabled={isSubmitting}
                   aria-busy={isSubmitting}
                   aria-disabled={isSubmitting}
-                  className={`w-full py-3.5 rounded-full text-sm font-light tracking-widest uppercase transition-all duration-300 ${
+                  className={`group w-full py-4 rounded-2xl text-base font-medium tracking-wide transition-all duration-300 flex items-center justify-center gap-3 ${
                     isSubmitting
                       ? "bg-violet-600/50 text-white/70 cursor-not-allowed"
-                      : "bg-gradient-to-r from-violet-600 to-cyan-500 text-white hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-[1.02]"
+                      : "bg-gradient-to-r from-violet-600 to-cyan-500 text-white hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-[1.01]"
                   }`}
                 >
                   {isSubmitting ? (
-                    <span className="flex items-center justify-center gap-2">
+                    <>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -237,9 +251,12 @@ export default function Contact() {
                         />
                       </svg>
                       Sending...
-                    </span>
+                    </>
                   ) : (
-                    "Send Message"
+                    <>
+                      Send message
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </>
                   )}
                 </button>
               </form>

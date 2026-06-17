@@ -1,4 +1,11 @@
-import { MapPin, Target, Wrench } from "lucide-react";
+import {
+  ArrowRight,
+  Code2,
+  Lightbulb,
+  MapPin,
+  Rocket,
+  Target,
+} from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,194 +24,212 @@ export const metadata: Metadata = {
 };
 
 const SKILL_COLORS = [
-  "border-violet-500/15 text-violet-300/70 hover:border-violet-400/30 hover:text-violet-200 hover:bg-violet-500/10",
-  "border-cyan-500/15 text-cyan-300/70 hover:border-cyan-400/30 hover:text-cyan-200 hover:bg-cyan-500/10",
-  "border-rose-500/15 text-rose-300/70 hover:border-rose-400/30 hover:text-rose-200 hover:bg-rose-500/10",
-  "border-amber-500/15 text-amber-300/70 hover:border-amber-400/30 hover:text-amber-200 hover:bg-amber-500/10",
-  "border-emerald-500/15 text-emerald-300/70 hover:border-emerald-400/30 hover:text-emerald-200 hover:bg-emerald-500/10",
-];
-
-const HIGHLIGHT_COLORS = [
-  "text-violet-500/20",
-  "text-cyan-500/20",
-  "text-rose-500/20",
+  "border-violet-500/20 text-violet-300 bg-violet-500/5",
+  "border-cyan-500/20 text-cyan-300 bg-cyan-500/5",
+  "border-rose-500/20 text-rose-300 bg-rose-500/5",
+  "border-amber-500/20 text-amber-300 bg-amber-500/5",
+  "border-emerald-500/20 text-emerald-300 bg-emerald-500/5",
 ];
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
-      {/* ── Header ── */}
+      {/* ── Hero — large intro with avatar ── */}
       <section className="relative overflow-hidden">
         <div className="animated-gradient-bg absolute inset-0" />
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-violet-600/15 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 50% 50%, #7c3aed 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-          }}
-        />
-        <div className="absolute -right-10 top-1/2 -translate-y-1/2 pointer-events-none hidden lg:block">
-          <Image
-            src="/colournobg.png"
-            alt=""
-            width={400}
-            height={400}
-            className="logo-invert opacity-[0.03] w-80 h-80"
-          />
-        </div>
+        <div className="absolute top-[20%] left-[5%] w-[500px] h-[500px] bg-violet-600/15 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none" />
 
-        <div className="relative max-w-6xl mx-auto px-6 pt-28 pb-20">
-          <AnimateOnScroll animation="fade-in-up">
-            <p className="text-violet-400/70 text-xs uppercase tracking-[0.3em] mb-3">
-              Get to Know Me
-            </p>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-wide mb-4">
-              About
-            </h1>
-            <p className="text-slate-400 text-lg max-w-xl leading-relaxed">
-              A software engineer who cares about craft and calm, reliable
-              delivery.
-            </p>
-          </AnimateOnScroll>
+        <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-24">
+          <div className="grid md:grid-cols-[1fr_auto] gap-12 items-center">
+            <AnimateOnScroll animation="fade-in-up">
+              <p className="text-violet-400 text-sm uppercase tracking-[0.2em] mb-4 font-medium">
+                About Me
+              </p>
+              <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+                I&apos;m Ranj.
+                <br />
+                <span className="gradient-text">I build for the web.</span>
+              </h1>
+              <p className="text-slate-400 text-lg max-w-xl leading-relaxed mb-8">
+                A software engineer who cares about craft, clean code, and calm,
+                reliable delivery. I focus on building user-centric experiences
+                that are accessible, performant, and maintainable.
+              </p>
+              <div className="flex flex-wrap gap-4 items-center">
+                <div className="flex items-center gap-2 text-slate-400 text-sm">
+                  <MapPin className="w-4 h-4 text-violet-400" />
+                  Based in the UK
+                </div>
+                <span className="w-1 h-1 rounded-full bg-slate-600" />
+                <div className="flex items-center gap-2 text-slate-400 text-sm">
+                  <Target className="w-4 h-4 text-cyan-400" />
+                  Full-Stack Development
+                </div>
+                <span className="w-1 h-1 rounded-full bg-slate-600" />
+                <div className="flex items-center gap-2 text-slate-400 text-sm">
+                  <Code2 className="w-4 h-4 text-rose-400" />
+                  Next.js, React, TypeScript
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="scale-in">
+              <div className="relative mx-auto md:mx-0">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 blur-2xl" />
+                <div className="relative glass-card rounded-3xl p-6 flex flex-col items-center">
+                  <Image
+                    src="/colournobg.png"
+                    alt="Ranj Sidhu"
+                    width={200}
+                    height={200}
+                    className="logo-invert w-40 h-40 md:w-48 md:h-48 object-contain mb-4"
+                  />
+                  <span className="text-white font-semibold text-lg">
+                    Ranj Sidhu
+                  </span>
+                  <span className="text-slate-400 text-sm mb-4">
+                    Software Engineer
+                  </span>
+                  <div className="flex gap-3">
+                    <Socials size={18} />
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 gradient-divider" />
       </section>
 
-      {/* ── Split layout ── */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr] gap-12 md:gap-16">
-          <AnimateOnScroll
-            animation="fade-in"
-            className="md:sticky md:top-24 md:self-start"
-          >
-            <div className="flex flex-col items-center md:items-start">
-              <div className="relative mb-8">
-                <div className="absolute inset-0 rounded-full bg-violet-500/10 blur-3xl" />
-                <Image
-                  src="/colournobg.png"
-                  alt="Ranj Sidhu"
-                  width={180}
-                  height={180}
-                  className="logo-invert relative w-36 h-36 md:w-44 md:h-44 object-contain"
-                />
-              </div>
-              <div className="space-y-3 text-center md:text-left">
-                <div className="flex items-center gap-2.5 text-slate-400 text-sm">
-                  <div className="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center">
-                    <MapPin className="w-3.5 h-3.5 text-violet-400" />
-                  </div>
-                  <span>Based in the UK</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-slate-400 text-sm">
-                  <div className="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
-                    <Target className="w-3.5 h-3.5 text-cyan-400" />
-                  </div>
-                  <span>Full-Stack Development</span>
-                </div>
-                <div className="flex items-center gap-2.5 text-slate-400 text-sm">
-                  <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
-                    <Wrench className="w-3.5 h-3.5 text-rose-400" />
-                  </div>
-                  <span>Next.js, React, TypeScript</span>
-                </div>
-              </div>
-              <div className="flex gap-3 mt-8">
-                <Link
-                  href="/projects"
-                  className="px-6 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-light tracking-wider uppercase text-xs hover:shadow-[0_0_25px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300"
-                >
-                  View Work
-                </Link>
-                <Link
-                  href="/contact"
-                  className="px-6 py-2.5 rounded-full border border-violet-500/30 text-white font-light tracking-wider uppercase text-xs hover:bg-violet-500/10 hover:border-violet-400/50 transition-all duration-300"
-                >
-                  Contact
-                </Link>
-              </div>
-              <div className="mt-6 flex gap-4">
-                <Socials size={18} />
-              </div>
-            </div>
-          </AnimateOnScroll>
+      {/* ── What Drives Me — horizontal cards ── */}
+      <section className="max-w-6xl mx-auto px-6 py-24">
+        <AnimateOnScroll animation="fade-in-up">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-12">
+            What Drives Me
+          </h2>
+        </AnimateOnScroll>
 
-          <div className="space-y-20">
-            <AnimateOnScroll animation="fade-in-up">
-              <div>
-                <p className="text-slate-300 text-lg leading-relaxed mb-4">
-                  I&apos;m Ranj, a software engineer who cares about craft and
-                  calm, reliable delivery.
-                </p>
-                <p className="text-slate-400 leading-relaxed">
-                  I focus on building user-centric web experiences with a strong
-                  attention to accessibility, performance, and maintainability.
-                  I enjoy shaping clear interfaces, sensible systems, and
-                  collaborating closely from idea to shipped product.
-                </p>
-              </div>
-            </AnimateOnScroll>
+        <div className="grid md:grid-cols-3 gap-5">
+          {[
+            {
+              icon: Lightbulb,
+              color: "violet",
+              title: "Product Thinking",
+              text: "I build software that solves real problems. Every feature starts with understanding the user and the outcome we want.",
+            },
+            {
+              icon: Code2,
+              color: "cyan",
+              title: "Full-Stack Craft",
+              text: "Comfortable across the stack — from React/Next.js front-ends to Node.js backends with PostgreSQL.",
+            },
+            {
+              icon: Rocket,
+              color: "rose",
+              title: "End-to-End Delivery",
+              text: "From UI design to API architecture to deployment and monitoring. I ship features, not just code.",
+            },
+          ].map((item, i) => {
+            const colorMap: Record<string, { bg: string; icon: string; border: string; glow: string }> = {
+              violet: {
+                bg: "from-violet-500/20 to-violet-500/5",
+                icon: "text-violet-400",
+                border: "hover:border-violet-500/30",
+                glow: "bg-violet-500/10",
+              },
+              cyan: {
+                bg: "from-cyan-500/20 to-cyan-500/5",
+                icon: "text-cyan-400",
+                border: "hover:border-cyan-500/30",
+                glow: "bg-cyan-500/10",
+              },
+              rose: {
+                bg: "from-rose-500/20 to-rose-500/5",
+                icon: "text-rose-400",
+                border: "hover:border-rose-500/30",
+                glow: "bg-rose-500/10",
+              },
+            };
+            const colors = colorMap[item.color] ?? colorMap.violet;
 
-            <AnimateOnScroll animation="fade-in-up">
-              <div className="flex items-center gap-6 mb-10">
-                <h2 className="text-xl font-light text-white tracking-wide shrink-0">
-                  Highlights
-                </h2>
-                <div className="gradient-divider flex-1" />
-              </div>
-              <div className="space-y-8">
-                {[
-                  {
-                    num: "01",
-                    text: "Product-minded engineer with a focus on usability and outcomes. I build software that solves real problems.",
-                  },
-                  {
-                    num: "02",
-                    text: "Experience across front-end (React/Next.js) and back-end (Node.js, PostgreSQL). Comfortable across the stack.",
-                  },
-                  {
-                    num: "03",
-                    text: "Comfortable shaping features end-to-end: from UI design to API architecture to deployment and monitoring.",
-                  },
-                ].map((item, i) => (
+            return (
+              <AnimateOnScroll
+                key={item.title}
+                animation="fade-in-up"
+                delay={i * 0.12}
+              >
+                <div
+                  className={`group glass-card rounded-3xl p-8 ${colors.border} transition-all duration-500 h-full relative overflow-hidden`}
+                >
                   <div
-                    key={item.num}
-                    className="group flex gap-6 items-start p-4 -mx-4 rounded-xl hover:bg-violet-500/5 transition-colors duration-300"
-                  >
-                    <span
-                      className={`text-3xl font-extralight ${HIGHLIGHT_COLORS[i]} shrink-0 w-10 group-hover:text-violet-400/30 transition-colors duration-300`}
+                    className={`absolute -bottom-16 -right-16 w-32 h-32 ${colors.glow} rounded-full blur-[60px] group-hover:scale-150 transition-transform pointer-events-none`}
+                  />
+                  <div className="relative">
+                    <div
+                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${colors.bg} flex items-center justify-center mb-6`}
                     >
-                      {item.num}
-                    </span>
-                    <p className="text-slate-400 leading-relaxed pt-1 group-hover:text-slate-300 transition-colors">
+                      <item.icon className={`w-5 h-5 ${colors.icon}`} />
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">
                       {item.text}
                     </p>
                   </div>
-                ))}
-              </div>
-            </AnimateOnScroll>
+                </div>
+              </AnimateOnScroll>
+            );
+          })}
+        </div>
+      </section>
 
-            <AnimateOnScroll animation="fade-in-up">
-              <div className="flex items-center gap-6 mb-10">
-                <h2 className="text-xl font-light text-white tracking-wide shrink-0">
-                  Skills
-                </h2>
-                <div className="gradient-divider flex-1" />
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {homepageSkills.map((skill, i) => (
-                  <div
-                    key={skill}
-                    className={`bg-white/3 border rounded-xl px-4 py-3.5 text-sm font-light transition-all duration-300 ${SKILL_COLORS[i % SKILL_COLORS.length]}`}
-                  >
-                    {skill}
-                  </div>
-                ))}
-              </div>
-            </AnimateOnScroll>
+      {/* ── Skills — pill grid ── */}
+      <section className="max-w-6xl mx-auto px-6 pb-24">
+        <AnimateOnScroll animation="fade-in-up">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white mb-10">
+            Skills & Tools
+          </h2>
+        </AnimateOnScroll>
+
+        <AnimateOnScroll animation="fade-in-up" delay={0.1}>
+          <div className="flex flex-wrap gap-3">
+            {homepageSkills.map((skill, i) => (
+              <span
+                key={skill}
+                className={`px-5 py-2.5 rounded-xl text-sm font-medium border transition-all duration-300 hover:scale-105 ${SKILL_COLORS[i % SKILL_COLORS.length]}`}
+              >
+                {skill}
+              </span>
+            ))}
           </div>
+        </AnimateOnScroll>
+      </section>
+
+      {/* ── CTA Banner ── */}
+      <section className="px-6 pb-24">
+        <div className="max-w-6xl mx-auto">
+          <AnimateOnScroll animation="fade-in-up">
+            <div className="glass-card rounded-3xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-violet-500/10 rounded-full blur-[80px] pointer-events-none" />
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                  Interested in working together?
+                </h3>
+                <p className="text-slate-400">
+                  I&apos;m always open to new projects and opportunities.
+                </p>
+              </div>
+              <Link
+                href="/contact"
+                className="group shrink-0 px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-medium tracking-wide hover:shadow-[0_0_40px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-3"
+              >
+                Get in touch
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
     </div>
