@@ -2,7 +2,12 @@
 
 import { useScrollAnimation } from "@/app/hooks/useScrollAnimation";
 
-type AnimationType = "fade-in-up" | "fade-in" | "scale-in";
+type AnimationType =
+  | "fade-in-up"
+  | "fade-in"
+  | "scale-in"
+  | "slide-in-left"
+  | "slide-in-right";
 
 export default function AnimateOnScroll({
   children,

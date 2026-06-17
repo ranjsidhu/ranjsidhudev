@@ -1,4 +1,10 @@
-import { Lock, Mail, RefreshCw, Shield, ShieldCheck } from "lucide-react";
+import {
+  CheckCircle,
+  Lock,
+  Mail,
+  Shield,
+  ShieldCheck,
+} from "lucide-react";
 import type { Metadata } from "next";
 import { AnimateOnScroll } from "@/app/components";
 
@@ -13,179 +19,193 @@ export const metadata: Metadata = {
   },
 };
 
-const CARD_COLORS = [
-  "hover:border-violet-500/30 group-hover:bg-violet-500/15",
-  "hover:border-cyan-500/30 group-hover:bg-cyan-500/15",
-  "hover:border-emerald-500/30 group-hover:bg-emerald-500/15",
-  "hover:border-rose-500/30 group-hover:bg-rose-500/15",
+const ICON_COLORS = [
+  "from-violet-500/20 to-violet-500/5 text-violet-400",
+  "from-cyan-500/20 to-cyan-500/5 text-cyan-400",
+  "from-emerald-500/20 to-emerald-500/5 text-emerald-400",
+  "from-rose-500/20 to-rose-500/5 text-rose-400",
 ];
 
-const ICON_COLORS = [
-  "text-violet-400",
-  "text-cyan-400",
-  "text-emerald-400",
-  "text-rose-400",
+const BORDER_COLORS = [
+  "hover:border-violet-500/30",
+  "hover:border-cyan-500/30",
+  "hover:border-emerald-500/30",
+  "hover:border-rose-500/30",
+];
+
+const BULLET_COLORS = [
+  "bg-violet-400",
+  "bg-cyan-400",
+  "bg-emerald-400",
+  "bg-rose-400",
 ];
 
 const sections = [
   {
     icon: Shield,
     title: "Responsible Disclosure",
-    content: (
-      <>
-        <p className="text-slate-400 mb-4 leading-relaxed">
-          I take the security of my website and services seriously. If you
-          believe you&apos;ve found a security vulnerability, I appreciate your
-          help in disclosing it to me in a responsible manner.
-        </p>
-        <p className="text-slate-400 mb-5 leading-relaxed">
-          Please email{" "}
-          <a
-            href="mailto:ranj@ranjsidhu.dev"
-            className="text-violet-400 hover:text-violet-300 transition-colors"
-          >
-            ranj@ranjsidhu.dev
-          </a>{" "}
-          with the following information:
-        </p>
-        <ul className="space-y-3 text-slate-400">
-          {[
-            "Description of the vulnerability",
-            "Steps to reproduce the issue",
-            "Potential impact of the vulnerability",
-            "Any suggested fixes (if available)",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-violet-500/40 mt-2 shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </>
-    ),
+    paragraphs: [
+      "I take the security of my website and services seriously. If you believe you've found a security vulnerability, I appreciate your help in disclosing it to me in a responsible manner.",
+    ],
+    email: true,
+    items: [
+      "Description of the vulnerability",
+      "Steps to reproduce the issue",
+      "Potential impact of the vulnerability",
+      "Any suggested fixes (if available)",
+    ],
   },
   {
     icon: ShieldCheck,
     title: "What to Expect",
-    content: (
-      <>
-        <p className="text-slate-400 mb-5 leading-relaxed">
-          When you report a security vulnerability, you can expect:
-        </p>
-        <ul className="space-y-3 text-slate-400">
-          {[
-            "Prompt acknowledgment of your report",
-            "Regular updates on the progress of fixing the vulnerability",
-            "Credit for your discovery (if you wish to be credited)",
-            "No legal action against you for responsible disclosure",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/40 mt-2 shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </>
-    ),
+    paragraphs: [
+      "When you report a security vulnerability, you can expect:",
+    ],
+    items: [
+      "Prompt acknowledgment of your report",
+      "Regular updates on the progress of fixing the vulnerability",
+      "Credit for your discovery (if you wish to be credited)",
+      "No legal action against you for responsible disclosure",
+    ],
   },
   {
     icon: Lock,
     title: "Security Practices",
-    content: (
-      <>
-        <p className="text-slate-400 mb-5 leading-relaxed">
-          I maintain several security practices to protect my website and
-          services:
-        </p>
-        <ul className="space-y-3 text-slate-400">
-          {[
-            "Regular security updates and patches",
-            "Secure coding practices and code reviews",
-            "Dependency vulnerability scanning",
-            "HTTPS encryption for all communications",
-            "Regular security assessments",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/40 mt-2 shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </>
-    ),
+    paragraphs: [
+      "I maintain several security practices to protect my website and services:",
+    ],
+    items: [
+      "Regular security updates and patches",
+      "Secure coding practices and code reviews",
+      "Dependency vulnerability scanning",
+      "HTTPS encryption for all communications",
+      "Regular security assessments",
+    ],
   },
   {
     icon: Mail,
     title: "Contact",
-    content: (
-      <p className="text-slate-400">
-        For security-related concerns, please contact me at{" "}
-        <a
-          href="mailto:ranj@ranjsidhu.dev"
-          className="text-violet-400 hover:text-violet-300 transition-colors"
-        >
-          ranj@ranjsidhu.dev
-        </a>
-      </p>
-    ),
+    paragraphs: [],
+    contactOnly: true,
   },
 ];
 
 export default function SecurityPage() {
   return (
     <div className="min-h-screen">
+      {/* ── Hero ── */}
       <section className="relative overflow-hidden">
         <div className="animated-gradient-bg absolute inset-0" />
-        <div className="absolute top-1/3 -left-32 w-64 h-64 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 50% 50%, #10b981 1px, transparent 1px)",
-            backgroundSize: "24px 24px",
-          }}
-        />
+        <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-violet-600/10 rounded-full blur-[130px] pointer-events-none" />
 
-        <div className="relative max-w-4xl mx-auto px-6 pt-28 pb-20">
-          <AnimateOnScroll animation="fade-in-up">
-            <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
-              <RefreshCw className="w-6 h-6 text-emerald-400" />
+        <div className="relative max-w-4xl mx-auto px-6 pt-32 pb-24 text-center">
+          <AnimateOnScroll animation="scale-in">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center mx-auto mb-8 border border-emerald-500/20">
+              <Shield className="w-8 h-8 text-emerald-400" />
             </div>
-            <p className="text-emerald-400/70 text-xs uppercase tracking-[0.3em] mb-3">
-              Trust & Safety
-            </p>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-wide">
-              Security Policy
+          </AnimateOnScroll>
+          <AnimateOnScroll animation="fade-in-up" delay={0.1}>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Security <span className="gradient-text">Policy</span>
             </h1>
+            <p className="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
+              How I protect my services and how you can help by reporting
+              vulnerabilities responsibly.
+            </p>
           </AnimateOnScroll>
         </div>
         <div className="absolute bottom-0 left-0 right-0 gradient-divider" />
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 py-16 space-y-6">
-        {sections.map((section, i) => (
-          <AnimateOnScroll
-            key={section.title}
-            animation="fade-in-up"
-            delay={i * 0.1}
-          >
-            <div
-              className={`group glass-card rounded-2xl p-8 ${CARD_COLORS[i]} transition-all duration-500`}
+      {/* ── Cards ── */}
+      <section className="max-w-4xl mx-auto px-6 py-20">
+        <div className="grid gap-6">
+          {sections.map((section, i) => (
+            <AnimateOnScroll
+              key={section.title}
+              animation="fade-in-up"
+              delay={i * 0.1}
             >
-              <div className="flex items-center gap-4 mb-6">
+              <div
+                className={`group glass-card rounded-3xl p-8 md:p-10 ${BORDER_COLORS[i]} transition-all duration-500 relative overflow-hidden`}
+              >
                 <div
-                  className={`w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center ${CARD_COLORS[i]} transition-colors duration-300`}
-                >
-                  <section.icon className={`w-4.5 h-4.5 ${ICON_COLORS[i]}`} />
+                  className={`absolute -bottom-16 -right-16 w-32 h-32 ${BULLET_COLORS[i]}/10 rounded-full blur-[60px] group-hover:scale-150 transition-transform pointer-events-none`}
+                />
+                <div className="relative">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div
+                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${ICON_COLORS[i]} flex items-center justify-center`}
+                    >
+                      <section.icon className="w-5 h-5" />
+                    </div>
+                    <h2 className="text-xl md:text-2xl font-semibold text-white">
+                      {section.title}
+                    </h2>
+                  </div>
+
+                  {section.contactOnly ? (
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                      <p className="text-slate-400">
+                        For security-related concerns, reach out at
+                      </p>
+                      <a
+                        href="mailto:ranj@ranjsidhu.dev"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white text-sm font-medium hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300"
+                      >
+                        <Mail className="w-4 h-4" />
+                        ranj@ranjsidhu.dev
+                      </a>
+                    </div>
+                  ) : (
+                    <>
+                      {section.paragraphs.map((p) => (
+                        <p
+                          key={p}
+                          className="text-slate-400 leading-relaxed mb-5"
+                        >
+                          {p}
+                        </p>
+                      ))}
+
+                      {section.email && (
+                        <p className="text-slate-400 mb-5 leading-relaxed">
+                          Please email{" "}
+                          <a
+                            href="mailto:ranj@ranjsidhu.dev"
+                            className="text-violet-400 hover:text-violet-300 transition-colors font-medium"
+                          >
+                            ranj@ranjsidhu.dev
+                          </a>{" "}
+                          with the following information:
+                        </p>
+                      )}
+
+                      {section.items && (
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          {section.items.map((item) => (
+                            <div
+                              key={item}
+                              className="flex items-start gap-3 p-3 rounded-xl bg-white/3 border border-white/5"
+                            >
+                              <CheckCircle
+                                className={`w-4 h-4 ${BULLET_COLORS[i].replace("bg-", "text-")} mt-0.5 shrink-0`}
+                              />
+                              <span className="text-slate-300 text-sm">
+                                {item}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
-                <h2 className="text-xl font-light text-white tracking-wide">
-                  {section.title}
-                </h2>
               </div>
-              {section.content}
-            </div>
-          </AnimateOnScroll>
-        ))}
+            </AnimateOnScroll>
+          ))}
+        </div>
       </section>
     </div>
   );
