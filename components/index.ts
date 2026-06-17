@@ -2,6 +2,7 @@ import AnimateOnScroll from "./AnimateOnScroll";
 import ComingSoonPage from "./ComingSoon";
 import { DelayedIframe } from "./DelayedIframe";
 import FeaturedProject from "./FeaturedProject";
+import Footer from "./Footer";
 import HeroScene from "./HeroScene";
 import Layout from "./Layout";
 import Navbar from "./Navbar";
@@ -16,6 +17,7 @@ export {
   ComingSoonPage,
   DelayedIframe,
   FeaturedProject,
+  Footer,
   HeroScene,
   Layout,
   Navbar,

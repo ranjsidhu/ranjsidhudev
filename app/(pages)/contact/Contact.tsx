@@ -4,7 +4,7 @@ import { Mail } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { Socials } from "@/app/components";
+import { Socials } from "@/components";
 import { ENQUIRY_OPTIONS, initialForm, validateEmail } from "@/constants";
 import type { ContactDetails } from "@/types";
 import { submitContactForm } from "./serveractions";

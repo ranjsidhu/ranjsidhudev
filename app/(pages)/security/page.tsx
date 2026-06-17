@@ -1,6 +1,6 @@
 import { Lock, Mail, RefreshCw, Shield, ShieldCheck } from "lucide-react";
 import type { Metadata } from "next";
-import { AnimateOnScroll } from "@/app/components";
+import { AnimateOnScroll } from "@/components";
 
 export const metadata: Metadata = {
   title: "Security Policy",

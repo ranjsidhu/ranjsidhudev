@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProjectDetails } from "@/app/components";
+import { ProjectDetails } from "@/components";
 
 export const metadata: Metadata = {
   title: "Stellar Recruitment",

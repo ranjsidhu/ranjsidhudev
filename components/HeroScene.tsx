@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Socials } from "@/app/components";
+import { Socials } from "@/components";
 
 const PARTICLE_COUNT = 30;
 
