@@ -418,3 +418,27 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.5);
+}
+
+html {
+  scrollbar-color: rgba(124, 58, 237, 0.3) var(--bg-primary);
+  scrollbar-width: thin;
+}
