@@ -64,8 +64,7 @@ export default function ProjectsPage() {
               </div>
 
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-6">
-                Work that{" "}
-                <span className="gradient-text">speaks</span>
+                Work that <span className="gradient-text">speaks</span>
                 <br />
                 for itself.
               </h1>
