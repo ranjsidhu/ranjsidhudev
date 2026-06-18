@@ -1,10 +1,4 @@
-import {
-  ArrowRight,
-  ExternalLink,
-  Folder,
-  Lock,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, ExternalLink, Folder, Lock, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AnimateOnScroll, DelayedIframe } from "@/app/components";
@@ -71,8 +65,7 @@ export default function ProjectsPage() {
               </div>
 
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] mb-6">
-                Work that{" "}
-                <span className="gradient-text">speaks</span>
+                Work that <span className="gradient-text">speaks</span>
                 <br />
                 for itself.
               </h1>
@@ -140,9 +133,7 @@ export default function ProjectsPage() {
                     <div className="relative z-10">
                       {/* Top bar with project info */}
                       <div className="flex flex-wrap items-center gap-4 mb-6">
-                        <div
-                          className={`w-2 h-2 rounded-full ${accent.dot}`}
-                        />
+                        <div className={`w-2 h-2 rounded-full ${accent.dot}`} />
                         <span className="text-slate-500 text-sm uppercase tracking-[0.2em]">
                           Project {String(i + 1).padStart(2, "0")}
                         </span>
@@ -156,7 +147,9 @@ export default function ProjectsPage() {
                       <div
                         className={`grid md:grid-cols-[1fr_auto] gap-8 mb-8 items-end ${isEven ? "" : "md:direction-rtl"}`}
                       >
-                        <div className={isEven ? "" : "md:order-2 md:text-right"}>
+                        <div
+                          className={isEven ? "" : "md:order-2 md:text-right"}
+                        >
                           <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 group-hover:text-violet-200 transition-colors leading-tight">
                             {project.title}
                           </h2>
@@ -164,7 +157,9 @@ export default function ProjectsPage() {
                             {project.summary}
                           </p>
                         </div>
-                        <div className={`flex flex-col gap-3 ${isEven ? "" : "md:order-1"}`}>
+                        <div
+                          className={`flex flex-col gap-3 ${isEven ? "" : "md:order-1"}`}
+                        >
                           <div className="flex flex-wrap gap-2 md:justify-end">
                             {project.tech.slice(0, 4).map((t) => (
                               <span
