@@ -13,6 +13,14 @@ const PROJECTS = [
       "User Management",
     ],
     url: "https://www.stellar-recruitment.co.uk/",
+    highlights: [
+      "Admin & recruiter dashboards",
+      "Candidate management pipeline",
+      "Role-based access control",
+      "PostgreSQL data layer",
+      "Responsive UI across devices",
+      "Production-grade security",
+    ],
   },
   {
     slug: "tutoring-to-success",
@@ -21,6 +29,14 @@ const PROJECTS = [
       "A modern, static website for a local tutoring agency. Designed to advertise services and facilitate contact, it features a clean, approachable interface and is powered by Next.js, Tailwind CSS, and Express for backend needs.",
     tech: ["Next.js", "Tailwind CSS", "Express", "Static Website"],
     url: "https://www.tutoringtosuccess.co.uk/",
+    highlights: [
+      "Clean, approachable design",
+      "Service showcase pages",
+      "Contact & booking system",
+      "Mobile-first responsive",
+      "SEO optimised for local search",
+      "Fast static page delivery",
+    ],
   },
 ];
 

@@ -1,40 +1,93 @@
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Socials } from "@/app/components";
+import { navLinks } from "@/constants";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-white/10 bg-[#0a0a0a] py-12 px-4 flex flex-col items-center mt-auto">
-      <div className="w-full max-w-5xl flex flex-col md:flex-row md:justify-between gap-10 md:gap-0">
-        <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
-          <span className="text-white font-light tracking-widest uppercase text-lg mb-2">
-            Ranj Sidhu
-          </span>
-          <span className="text-white/40 text-xs mb-2">Software Engineer</span>
-          <span className="text-white/25 text-xs">Based in the UK</span>
-          <span className="text-white/25 text-xs mt-2">
-            &copy; {new Date().getFullYear()} Ranj Sidhu
-          </span>
-        </div>
+    <footer className="relative mt-auto overflow-hidden">
+      <div className="gradient-divider" />
 
-        <div className="flex flex-col items-center">
-          <span className="text-white/50 font-medium mb-3 tracking-wider uppercase text-xs">
-            Connect
-          </span>
-          <div className="flex gap-4 mb-3">
-            <Socials size={24} />
+      <div className="bg-[#030014] relative">
+        <div className="absolute top-0 left-1/4 w-125 h-75 bg-violet-600/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-100 h-50 bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="max-w-6xl mx-auto px-6 pt-20 pb-8 relative">
+          {/* CTA strip */}
+          <div className="glass-card rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
+            <div>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
+                Ready to start a project?
+              </h3>
+              <p className="text-slate-400 text-sm">
+                Let&apos;s build something great together.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="group shrink-0 px-7 py-3.5 rounded-xl bg-linear-to-r from-violet-600 to-cyan-500 text-white text-sm font-medium hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
+            >
+              Get in touch
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
-        </div>
 
-        <div className="flex flex-col items-center md:items-start">
-          <span className="text-white/50 font-medium mb-3 tracking-wider uppercase text-xs">
-            Let&apos;s Connect
-          </span>
-          <Link
-            href="/contact"
-            className="px-6 py-2 rounded-full border border-white/20 text-white font-light tracking-widest uppercase hover:bg-white/5 transition text-sm"
-          >
-            Get in Touch
-          </Link>
+          {/* Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            {/* Brand */}
+            <div className="col-span-2">
+              <span className="text-2xl font-bold gradient-text block mb-3">
+                Ranj Sidhu
+              </span>
+              <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-5">
+                Full-stack engineer crafting polished, production-ready web
+                experiences. Based in the UK, available worldwide.
+              </p>
+              <div className="flex gap-4">
+                <Socials size={18} />
+              </div>
+            </div>
+
+            {/* Pages */}
+            <div>
+              <span className="text-xs font-semibold text-slate-300 uppercase tracking-[0.2em] block mb-4">
+                Pages
+              </span>
+              <div className="flex flex-col gap-3">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-slate-400 text-sm hover:text-violet-300 transition-colors w-fit"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <span className="text-xs font-semibold text-slate-300 uppercase tracking-[0.2em] block mb-4">
+                Contact
+              </span>
+              <div className="flex flex-col gap-3">
+                <a
+                  href="mailto:ranj@ranjsidhu.dev"
+                  className="text-slate-400 text-sm hover:text-violet-300 transition-colors"
+                >
+                  ranj@ranjsidhu.dev
+                </a>
+                <span className="text-slate-500 text-sm">Based in the UK</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom */}
+          <div className="gradient-divider mb-6" />
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+            <span>&copy; {new Date().getFullYear()} Ranj Sidhu</span>
+          </div>
         </div>
       </div>
     </footer>
