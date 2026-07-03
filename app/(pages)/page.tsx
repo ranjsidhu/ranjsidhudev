@@ -107,7 +107,7 @@ export default async function HomePage() {
       </section>
 
       {/* ── Featured Projects — large visual cards ── */}
-      <section className="relative py-24 px-6">
+      <section className="relative py-24 px-6 overflow-hidden">
         <div className="absolute top-1/3 -right-48 w-96 h-96 bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto">
