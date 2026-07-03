@@ -88,12 +88,12 @@ export default function SecurityPage() {
       {/* ── Hero ── */}
       <section className="relative overflow-hidden">
         <div className="animated-gradient-bg absolute inset-0" />
-        <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-violet-600/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute top-[20%] left-[10%] w-125 h-125 bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[10%] w-100 h-100 bg-violet-600/10 rounded-full blur-[130px] pointer-events-none" />
 
         <div className="relative max-w-4xl mx-auto px-6 pt-32 pb-24 text-center">
           <AnimateOnScroll animation="scale-in">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center mx-auto mb-8 border border-emerald-500/20">
+            <div className="w-20 h-20 rounded-2xl bg-linear-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center mx-auto mb-8 border border-emerald-500/20">
               <Shield className="w-8 h-8 text-emerald-400" />
             </div>
           </AnimateOnScroll>
@@ -128,7 +128,7 @@ export default function SecurityPage() {
                 <div className="relative">
                   <div className="flex items-center gap-4 mb-6">
                     <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${ICON_COLORS[i]} flex items-center justify-center`}
+                      className={`w-12 h-12 rounded-xl bg-linear-to-br ${ICON_COLORS[i]} flex items-center justify-center`}
                     >
                       <section.icon className="w-5 h-5" />
                     </div>
@@ -144,7 +144,7 @@ export default function SecurityPage() {
                       </p>
                       <a
                         href="mailto:ranj@ranjsidhu.dev"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white text-sm font-medium hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-linear-to-r from-violet-600 to-cyan-500 text-white text-sm font-medium hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300"
                       >
                         <Mail className="w-4 h-4" />
                         ranj@ranjsidhu.dev

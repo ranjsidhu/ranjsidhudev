@@ -1,4 +1,4 @@
-import { ArrowRight, Heart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Socials } from "@/app/components";
 import { navLinks } from "@/constants";
@@ -9,8 +9,8 @@ export default function Footer() {
       <div className="gradient-divider" />
 
       <div className="bg-[#030014] relative">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-violet-600/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[200px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 left-1/4 w-125 h-75 bg-violet-600/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-100 h-50 bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 pt-20 pb-8 relative">
           {/* CTA strip */}
@@ -25,7 +25,7 @@ export default function Footer() {
             </div>
             <Link
               href="/contact"
-              className="group shrink-0 px-7 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white text-sm font-medium hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              className="group shrink-0 px-7 py-3.5 rounded-xl bg-linear-to-r from-violet-600 to-cyan-500 text-white text-sm font-medium hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
             >
               Get in touch
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -87,10 +87,6 @@ export default function Footer() {
           <div className="gradient-divider mb-6" />
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <span>&copy; {new Date().getFullYear()} Ranj Sidhu</span>
-            <span className="flex items-center gap-1.5">
-              Built with <Heart className="w-3 h-3 text-rose-400" /> using
-              Next.js
-            </span>
           </div>
         </div>
       </div>

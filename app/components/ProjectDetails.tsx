@@ -15,8 +15,8 @@ export default function ProjectDetails({
       {/* ── Hero — bold, left-aligned ── */}
       <section className="relative overflow-hidden">
         <div className="animated-gradient-bg absolute inset-0" />
-        <div className="absolute top-[20%] right-[5%] w-[500px] h-[500px] bg-violet-600/10 rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute bottom-[10%] left-[10%] w-[300px] h-[300px] bg-cyan-500/8 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-[20%] right-[5%] w-125 h-125 bg-violet-600/10 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-[10%] left-[10%] w-75 h-75 bg-cyan-500/8 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-24">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/20 bg-violet-500/5 mb-8">
@@ -43,7 +43,7 @@ export default function ProjectDetails({
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-medium tracking-wide hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300"
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-linear-to-r from-violet-600 to-cyan-500 text-white font-medium tracking-wide hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300"
           >
             Visit live site
             <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

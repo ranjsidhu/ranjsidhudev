@@ -64,14 +64,14 @@ const Navbar = () => {
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-linear-to-r from-violet-500 to-cyan-400" />
                   )}
                 </Link>
               );
             })}
             <Link
               href="/contact"
-              className="ml-3 px-5 py-2 text-sm font-medium text-white bg-gradient-to-r from-violet-600 to-cyan-500 rounded-xl hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              className="ml-3 px-5 py-2 text-sm font-medium text-white bg-linear-to-r from-violet-600 to-cyan-500 rounded-xl hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-2"
             >
               Hire me
               <ArrowRight className="w-3.5 h-3.5" />
@@ -90,7 +90,7 @@ const Navbar = () => {
               <div className="w-5 h-5 flex flex-col justify-center items-center gap-1">
                 <span
                   className={`block w-5 h-0.5 bg-current rounded-full transform transition duration-300 ${
-                    isOpen ? "rotate-45 translate-y-[3px]" : ""
+                    isOpen ? "rotate-45 translate-y-0.75" : ""
                   }`}
                 />
                 <span
@@ -100,7 +100,7 @@ const Navbar = () => {
                 />
                 <span
                   className={`block w-5 h-0.5 bg-current rounded-full transform transition duration-300 ${
-                    isOpen ? "-rotate-45 -translate-y-[3px]" : ""
+                    isOpen ? "-rotate-45 -translate-y-0.75" : ""
                   }`}
                 />
               </div>
@@ -134,7 +134,7 @@ const Navbar = () => {
           <div className="pt-2">
             <Link
               href="/contact"
-              className="block text-center px-4 py-3 rounded-xl text-base font-medium text-white bg-gradient-to-r from-violet-600 to-cyan-500"
+              className="block text-center px-4 py-3 rounded-xl text-base font-medium text-white bg-linear-to-r from-violet-600 to-cyan-500"
               onClick={() => setIsOpen(false)}
             >
               Hire me

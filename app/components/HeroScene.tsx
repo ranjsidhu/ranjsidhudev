@@ -52,9 +52,9 @@ export default function HeroScene() {
       className="animated-gradient-bg relative min-h-screen flex items-center overflow-hidden"
     >
       {/* Ambient blobs */}
-      <div className="absolute top-[10%] left-[5%] w-[500px] h-[500px] bg-violet-600/20 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-[10%] right-[5%] w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute top-[40%] right-[30%] w-[300px] h-[300px] bg-rose-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[10%] left-[5%] w-125 h-125 bg-violet-600/20 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[5%] w-100 h-100 bg-cyan-500/15 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-[40%] right-[30%] w-75 h-75 bg-rose-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Mouse glow */}
       <div
@@ -106,7 +106,7 @@ export default function HeroScene() {
           <div className="hero-animate hero-animate-delay-4 flex flex-wrap gap-4 mb-12">
             <Link
               href="/projects"
-              className="group px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-medium tracking-wide text-base hover:shadow-[0_0_40px_rgba(124,58,237,0.4)] hover:scale-105 transition-all duration-300 flex items-center gap-3"
+              className="group px-8 py-4 rounded-2xl bg-linear-to-r from-violet-600 to-cyan-500 text-white font-medium tracking-wide text-base hover:shadow-[0_0_40px_rgba(124,58,237,0.4)] hover:scale-105 transition-all duration-300 flex items-center gap-3"
             >
               See my work
               <span className="group-hover:translate-x-1 transition-transform">
@@ -137,7 +137,7 @@ export default function HeroScene() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="glass-card rounded-2xl px-8 py-5 text-center min-w-[180px] hover:scale-105 transition-transform duration-300"
+              className="glass-card rounded-2xl px-8 py-5 text-center min-w-45 hover:scale-105 transition-transform duration-300"
             >
               <div className="text-3xl font-bold gradient-text mb-1">
                 {stat.value}

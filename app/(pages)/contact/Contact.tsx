@@ -1,9 +1,8 @@
 "use client";
 
-import { ArrowRight, Mail, MessageSquare, Send } from "lucide-react";
+import { ArrowRight, Globe, Mail, MessageSquare, Send } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { Socials } from "@/app/components";
 import { ENQUIRY_OPTIONS, initialForm, validateEmail } from "@/constants";
 import type { ContactDetails } from "@/types";
 import { submitContactForm } from "./serveractions";
@@ -43,8 +42,8 @@ export default function Contact() {
       {/* ── Hero — centered, impactful ── */}
       <section className="relative overflow-hidden">
         <div className="animated-gradient-bg absolute inset-0" />
-        <div className="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-rose-500/10 rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-violet-600/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute top-[20%] left-[10%] w-125 h-125 bg-rose-500/10 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[10%] w-100 h-100 bg-violet-600/10 rounded-full blur-[130px] pointer-events-none" />
 
         <div className="relative max-w-4xl mx-auto px-6 pt-32 pb-24 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-rose-500/20 bg-rose-500/5 mb-8">
@@ -74,7 +73,7 @@ export default function Contact() {
             href="mailto:ranj@ranjsidhu.dev"
             className="group glass-card rounded-2xl p-6 hover:border-violet-500/30 transition-all duration-300 flex items-center gap-4"
           >
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/20 to-violet-500/5 flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-violet-500/20 to-violet-500/5 flex items-center justify-center shrink-0">
               <Mail className="w-5 h-5 text-violet-400" />
             </div>
             <div>
@@ -84,7 +83,7 @@ export default function Contact() {
           </a>
 
           <div className="glass-card rounded-2xl p-6 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-cyan-500/20 to-cyan-500/5 flex items-center justify-center shrink-0">
               <Send className="w-5 h-5 text-cyan-400" />
             </div>
             <div>
@@ -96,9 +95,9 @@ export default function Contact() {
           </div>
 
           <div className="glass-card rounded-2xl p-6 flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-linear-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center shrink-0">
               <div className="flex gap-1.5">
-                <Socials size={14} />
+                <Globe className="w-5 h-5 text-emerald-400" />
               </div>
             </div>
             <div>
@@ -118,7 +117,7 @@ export default function Contact() {
           <div className="relative">
             {submitted ? (
               <div className="text-center py-16">
-                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 rounded-3xl bg-linear-to-br from-emerald-500/20 to-emerald-500/5 flex items-center justify-center mx-auto mb-6">
                   <span className="text-3xl text-emerald-400">&#10003;</span>
                 </div>
                 <h2 className="text-3xl font-bold text-white mb-3">
@@ -224,7 +223,7 @@ export default function Contact() {
                   className={`group w-full py-4 rounded-2xl text-base font-medium tracking-wide transition-all duration-300 flex items-center justify-center gap-3 ${
                     isSubmitting
                       ? "bg-violet-600/50 text-white/70 cursor-not-allowed"
-                      : "bg-gradient-to-r from-violet-600 to-cyan-500 text-white hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-[1.01]"
+                      : "bg-linear-to-r from-violet-600 to-cyan-500 text-white hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-[1.01]"
                   }`}
                 >
                   {isSubmitting ? (

@@ -50,8 +50,8 @@ export default function ProjectsPage() {
       {/* ── Hero ── */}
       <section className="relative overflow-hidden">
         <div className="animated-gradient-bg absolute inset-0" />
-        <div className="absolute top-[15%] right-[5%] w-[600px] h-[600px] bg-violet-600/15 rounded-full blur-[180px] pointer-events-none" />
-        <div className="absolute bottom-[5%] left-[10%] w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute top-[15%] right-[5%] w-150 h-150 bg-violet-600/15 rounded-full blur-[180px] pointer-events-none" />
+        <div className="absolute bottom-[5%] left-[10%] w-100 h-100 bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-28">
           <AnimateOnScroll animation="fade-in-up">
@@ -109,7 +109,7 @@ export default function ProjectsPage() {
           return (
             <div key={project.slug} className="relative">
               <div
-                className={`absolute ${isEven ? "right-0" : "left-0"} top-1/2 -translate-y-1/2 w-[500px] h-[500px] ${accent.glow} rounded-full blur-[180px] pointer-events-none opacity-50`}
+                className={`absolute ${isEven ? "right-0" : "left-0"} top-1/2 -translate-y-1/2 w-125 h-125 ${accent.glow} rounded-full blur-[180px] pointer-events-none opacity-50`}
               />
 
               <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
@@ -119,7 +119,7 @@ export default function ProjectsPage() {
                   <div className="relative">
                     {/* Watermark number */}
                     <div
-                      className={`absolute -top-8 ${isEven ? "-left-4" : "-right-4"} text-[12rem] md:text-[16rem] font-black leading-none bg-gradient-to-b ${accent.number} bg-clip-text text-transparent select-none pointer-events-none z-0`}
+                      className={`absolute -top-8 ${isEven ? "-left-4" : "-right-4"} text-[12rem] md:text-[16rem] font-black leading-none bg-linear-to-b ${accent.number} bg-clip-text text-transparent select-none pointer-events-none z-0`}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </div>
@@ -181,7 +181,7 @@ export default function ProjectsPage() {
                             href={project.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r ${accent.visitBg} text-white text-sm font-medium hover:shadow-[0_0_25px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300`}
+                            className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r ${accent.visitBg} text-white text-sm font-medium hover:shadow-[0_0_25px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300`}
                           >
                             Visit live site
                             <ExternalLink className="w-4 h-4" />

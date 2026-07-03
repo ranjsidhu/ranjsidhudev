@@ -4,9 +4,9 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div className="animated-gradient-bg min-h-screen w-full flex flex-col items-center justify-center text-center relative px-6 overflow-hidden">
-      <div className="absolute top-[20%] -left-32 w-[500px] h-[500px] bg-violet-600/15 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-[20%] -right-32 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-rose-500/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[20%] -left-32 w-125 h-125 bg-violet-600/15 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[20%] -right-32 w-100 h-100 bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-[40%] left-[50%] w-75 h-75 bg-rose-500/8 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-lg">
         {/* Big 404 */}
@@ -31,7 +31,7 @@ export default function NotFound() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/"
-              className="group px-6 py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-medium hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              className="group px-6 py-3.5 rounded-xl bg-linear-to-r from-violet-600 to-cyan-500 text-white font-medium hover:shadow-[0_0_30px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <Home className="w-4 h-4" />
               Go home

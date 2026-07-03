@@ -37,8 +37,8 @@ export default function AboutPage() {
       {/* ── Hero — large intro with avatar ── */}
       <section className="relative overflow-hidden">
         <div className="animated-gradient-bg absolute inset-0" />
-        <div className="absolute top-[20%] left-[5%] w-[500px] h-[500px] bg-violet-600/15 rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute top-[20%] left-[5%] w-125 h-125 bg-violet-600/15 rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[10%] w-100 h-100 bg-cyan-500/10 rounded-full blur-[130px] pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-24">
           <div className="grid md:grid-cols-[1fr_auto] gap-12 items-center">
@@ -76,7 +76,7 @@ export default function AboutPage() {
 
             <AnimateOnScroll animation="scale-in">
               <div className="relative mx-auto md:mx-0">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-violet-500/20 to-cyan-500/20 blur-2xl" />
+                <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-violet-500/20 to-cyan-500/20 blur-2xl" />
                 <div className="relative glass-card rounded-3xl p-6 flex flex-col items-center">
                   <Image
                     src="/colournobg.png"
@@ -170,7 +170,7 @@ export default function AboutPage() {
                   />
                   <div className="relative">
                     <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${colors.bg} flex items-center justify-center mb-6`}
+                      className={`w-12 h-12 rounded-xl bg-linear-to-br ${colors.bg} flex items-center justify-center mb-6`}
                     >
                       <item.icon className={`w-5 h-5 ${colors.icon}`} />
                     </div>
@@ -226,7 +226,7 @@ export default function AboutPage() {
               </div>
               <Link
                 href="/contact"
-                className="group shrink-0 px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-cyan-500 text-white font-medium tracking-wide hover:shadow-[0_0_40px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-3"
+                className="group shrink-0 px-8 py-4 rounded-2xl bg-linear-to-r from-violet-600 to-cyan-500 text-white font-medium tracking-wide hover:shadow-[0_0_40px_rgba(124,58,237,0.3)] hover:scale-105 transition-all duration-300 flex items-center gap-3"
               >
                 Get in touch
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
