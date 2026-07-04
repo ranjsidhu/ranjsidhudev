@@ -1,6 +1,6 @@
 "use client";
 
-import { useScrollAnimation } from "@/app/hooks/useScrollAnimation";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 type AnimationType =
   | "fade-in-up"

@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AnimateOnScroll } from "@/app/components";
+import { AnimateOnScroll } from "@/components";
 import { PROJECTS } from "@/constants";
 
 export const metadata: Metadata = {
