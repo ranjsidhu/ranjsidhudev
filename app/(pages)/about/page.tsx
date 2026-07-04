@@ -9,7 +9,7 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimateOnScroll, Socials } from "@/app/components";
+import { AnimateOnScroll, Socials } from "@/components";
 import { homepageSkills } from "@/constants";
 
 export const metadata: Metadata = {

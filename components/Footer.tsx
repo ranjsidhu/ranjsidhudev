@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { Socials } from "@/app/components";
+import { Socials } from "@/components";
 import { navLinks } from "@/constants";
 
 export default function Footer() {

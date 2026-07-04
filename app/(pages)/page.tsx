@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimateOnScroll, HeroScene, Socials } from "@/app/components";
+import { AnimateOnScroll, HeroScene, Socials } from "@/components";
 import { homepageSkills, PROJECTS } from "@/constants";
 
 export default async function HomePage() {
