@@ -102,13 +102,13 @@ export default function RootLayout({
           title="RSS Feed for Ranj Sidhu"
           href="/feed.xml"
         />
-        <meta name="theme-color" content="#0a0a0a" />
+        <meta name="theme-color" content="#030014" />
         <Script id="json-ld" type="application/ld+json">
           {JSON.stringify(jsonLd)}
         </Script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-[#fafafa]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#030014] text-slate-200`}
       >
         <Navbar />
         <main className="pt-16">{children}</main>

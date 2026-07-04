@@ -1,12 +1,22 @@
 @import "tailwindcss";
 
-body {
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
-  background-color: #0a0a0a;
-  color: #fafafa;
+:root {
+  --bg-primary: #030014;
+  --bg-secondary: #0a0118;
+  --accent-violet: #7c3aed;
+  --accent-cyan: #06b6d4;
+  --accent-rose: #f43f5e;
+  --accent-amber: #f59e0b;
+  --accent-emerald: #10b981;
 }
 
-/* ── Animated gradient background ── */
+body {
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: #e2e8f0;
+}
+
+/* ── Animated mesh gradient background ── */
 @keyframes gradient-shift {
   0%,
   100% {
@@ -20,14 +30,24 @@ body {
 .animated-gradient-bg {
   background: linear-gradient(
     135deg,
-    #0a0a0a 0%,
-    #0f0a1a 25%,
-    #0a0a0a 50%,
-    #0a1020 75%,
-    #0a0a0a 100%
+    #030014 0%,
+    #1e0a3c 20%,
+    #0c1445 40%,
+    #030014 55%,
+    #0a2540 70%,
+    #1a0530 85%,
+    #030014 100%
   );
   background-size: 400% 400%;
   animation: gradient-shift 20s ease infinite;
+}
+
+/* ── Ambient glow orbs ── */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
 }
 
 /* ── Orbital ring animations ── */
@@ -70,51 +90,56 @@ body {
 .orbit-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(124, 58, 237, 0.15);
 }
 
 .orbit-ring-1 {
   width: 320px;
   height: 320px;
   animation: orbit-1 25s linear infinite;
+  border-color: rgba(124, 58, 237, 0.2);
 }
 
 .orbit-ring-2 {
   width: 480px;
   height: 480px;
   animation: orbit-reverse 35s linear infinite;
+  border-color: rgba(6, 182, 212, 0.15);
 }
 
 .orbit-ring-3 {
   width: 640px;
   height: 640px;
   animation: orbit-1 50s linear infinite;
+  border-color: rgba(244, 63, 94, 0.1);
 }
 
 .orbit-dot {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  top: -3px;
+  background: rgba(124, 58, 237, 0.8);
+  top: -4px;
   left: 50%;
-  margin-left: -3px;
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+  margin-left: -4px;
+  box-shadow:
+    0 0 20px rgba(124, 58, 237, 0.6),
+    0 0 60px rgba(124, 58, 237, 0.3);
 }
 
 .orbit-dot-accent {
-  background: rgba(139, 92, 246, 0.6);
+  background: rgba(6, 182, 212, 0.8);
   box-shadow:
-    0 0 16px rgba(139, 92, 246, 0.5),
-    0 0 40px rgba(139, 92, 246, 0.2);
+    0 0 20px rgba(6, 182, 212, 0.6),
+    0 0 60px rgba(6, 182, 212, 0.3);
 }
 
 .orbit-dot-blue {
-  background: rgba(59, 130, 246, 0.5);
+  background: rgba(244, 63, 94, 0.7);
   box-shadow:
-    0 0 16px rgba(59, 130, 246, 0.4),
-    0 0 40px rgba(59, 130, 246, 0.15);
+    0 0 20px rgba(244, 63, 94, 0.5),
+    0 0 60px rgba(244, 63, 94, 0.2);
 }
 
 /* ── Floating particles ── */
@@ -149,9 +174,23 @@ body {
   position: absolute;
   width: 2px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   animation: float-up linear infinite;
+}
+
+.particle-violet {
+  background: rgba(124, 58, 237, 0.5);
+  box-shadow: 0 0 6px rgba(124, 58, 237, 0.3);
+}
+
+.particle-cyan {
+  background: rgba(6, 182, 212, 0.5);
+  box-shadow: 0 0 6px rgba(6, 182, 212, 0.3);
+}
+
+.particle-rose {
+  background: rgba(244, 63, 94, 0.4);
+  box-shadow: 0 0 6px rgba(244, 63, 94, 0.3);
 }
 
 /* ── Scroll-triggered animations ── */
@@ -272,10 +311,57 @@ body {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+  background: linear-gradient(135deg, #7c3aed, #06b6d4, #f43f5e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Vibrant gradient text variant */
+.gradient-text-warm {
+  background: linear-gradient(135deg, #f59e0b, #f43f5e, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(124, 58, 237, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(124, 58, 237, 0.15);
+}
+
+.glass-card:hover {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: rgba(124, 58, 237, 0.3);
+  box-shadow:
+    0 0 40px rgba(124, 58, 237, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient border effect */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(124, 58, 237, 0.4),
+    rgba(6, 182, 212, 0.4),
+    rgba(244, 63, 94, 0.3)
+  );
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 /* Logo inversion for dark bg */
@@ -286,4 +372,73 @@ body {
 /* Arrow slide on hover */
 .group:hover .arrow-slide {
   transform: translateX(4px);
+}
+
+/* Shimmer effect for buttons */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.btn-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Gradient divider */
+.gradient-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(124, 58, 237, 0.5),
+    rgba(6, 182, 212, 0.5),
+    transparent
+  );
+}
+
+/* Marquee scroll */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.5);
+}
+
+html {
+  scrollbar-color: rgba(124, 58, 237, 0.3) var(--bg-primary);
+  scrollbar-width: thin;
 }

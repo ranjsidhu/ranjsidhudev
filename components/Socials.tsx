@@ -10,7 +10,7 @@ export default function Socials({ size }: SocialProps) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram"
-        className="text-white/60 hover:text-white transition-colors duration-200"
+        className="text-slate-400 hover:text-rose-400 transition-colors duration-200"
       >
         <FaInstagram size={size} />
       </Link>
@@ -19,14 +19,14 @@ export default function Socials({ size }: SocialProps) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
-        className="text-white/60 hover:text-white transition-colors duration-200"
+        className="text-slate-400 hover:text-cyan-400 transition-colors duration-200"
       >
         <FaLinkedin size={size} />
       </Link>
       <Link
         href="mailto:ranj@ranjsidhu.dev"
         aria-label="Email"
-        className="text-white/60 hover:text-white transition-colors duration-200"
+        className="text-slate-400 hover:text-violet-400 transition-colors duration-200"
       >
         <FaEnvelope size={size} />
       </Link>
@@ -35,7 +35,7 @@ export default function Socials({ size }: SocialProps) {
         rel="noopener noreferrer"
         href="https://github.com/ranjsidhu"
         aria-label="GitHub"
-        className="text-white/60 hover:text-white transition-colors duration-200"
+        className="text-slate-400 hover:text-emerald-400 transition-colors duration-200"
       >
         <FaGithub size={size} />
       </Link>
