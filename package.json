@@ -16,7 +16,7 @@
     "postcss": "8.5.23"
   },
   "dependencies": {
-    "@aws-sdk/client-sesv2": "3.1095.0",
+    "@aws-sdk/client-sesv2": "3.1100.0",
     "@tailwindcss/postcss": "4.3.3",
     "lucide-react": "1.28.0",
     "next": "16.2.12",
