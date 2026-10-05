@@ -14,7 +14,7 @@ npm run lint || {
 }
 
 echo "📝 Running type check..."
-npm run type-check || {
+npm run tsc || {
     echo "❌ Type check failed. Please fix the type errors before committing."
     exit 1
 }

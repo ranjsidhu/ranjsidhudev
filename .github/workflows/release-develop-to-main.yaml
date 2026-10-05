@@ -22,7 +22,7 @@ jobs:
     outputs:
       merged: ${{ steps.wait_merge.outputs.merged }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           token: ${{ secrets.RELEASE_PAT }}
 
@@ -88,4 +88,7 @@ jobs:
     needs: release
     if: needs.release.outputs.merged == 'true'
     uses: ./.github/workflows/vercel-prod.yaml
-    secrets: inherit
+    secrets:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
