@@ -33,8 +33,10 @@ echo "✅ Validating Terraform configuration..."
 terraform validate
 
 # Step 3: Plan
-echo "📋 Planning infrastructure changes..."
-terraform plan -out=tfplan
+# ECR tags are immutable, so the task definition pins a unique image tag (defaults to the current git SHA)
+IMAGE_TAG="${IMAGE_TAG:-$(git rev-parse --short HEAD)}"
+echo "📋 Planning infrastructure changes (image tag: $IMAGE_TAG)..."
+terraform plan -var="image_tag=$IMAGE_TAG" -out=tfplan
 
 # Step 4: Ask for confirmation
 echo ""
@@ -64,18 +66,19 @@ if [ -n "$ECR_URL" ]; then
     echo ""
     echo "📦 Next steps:"
     echo ""
-    echo "1. Build your Docker image:"
-    echo "   docker buildx build --platform linux/amd64 -t $PROJECT_NAME ."
+    echo "1. Build your Docker image (tags are immutable, so use a unique tag such as the git SHA):"
+    echo "   IMAGE_TAG=\$(git rev-parse --short HEAD)"
+    echo "   docker buildx build --platform linux/amd64 -t $PROJECT_NAME:\$IMAGE_TAG ."
     echo ""
     echo "2. Login to ECR:"
     echo "   aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ECR_URL"
     echo ""
     echo "3. Tag and push image:"
-    echo "   docker tag $PROJECT_NAME:latest $ECR_URL:latest"
-    echo "   docker push $ECR_URL:latest"
+    echo "   docker tag $PROJECT_NAME:\$IMAGE_TAG $ECR_URL:\$IMAGE_TAG"
+    echo "   docker push $ECR_URL:\$IMAGE_TAG"
     echo ""
-    echo "4. Force ECS deployment:"
-    echo "   aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment --region $REGION"
+    echo "4. Deploy the new image tag:"
+    echo "   terraform apply -var=\"image_tag=\$IMAGE_TAG\""
     echo ""
     echo "5. Monitor deployment:"
     echo "   aws ecs describe-services --cluster $CLUSTER --services $SERVICE --region $REGION"

@@ -71,3 +71,8 @@ variable "environment_variables" {
   }))
   default = []
 }
+
+variable "image_tag" {
+  description = "Image tag to deploy (e.g. git SHA); ECR tags are immutable so each build needs a unique tag"
+  type        = string
+}

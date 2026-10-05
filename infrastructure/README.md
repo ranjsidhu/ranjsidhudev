@@ -118,26 +118,21 @@ REGION=$(terraform output -raw aws_region || echo "eu-west-2")
 # Login to ECR
 aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ECR_URL
 
+# ECR tags are immutable, so every build needs a unique tag
+IMAGE_TAG=$(git rev-parse --short HEAD)
+
 # Build for AMD64
-docker buildx build --platform linux/amd64 -t myapp .
+docker buildx build --platform linux/amd64 -t myapp:$IMAGE_TAG .
 
 # Tag and push
-docker tag myapp:latest $ECR_URL:latest
-docker push $ECR_URL:latest
+docker tag myapp:$IMAGE_TAG $ECR_URL:$IMAGE_TAG
+docker push $ECR_URL:$IMAGE_TAG
 ```
 
-### 7. Force ECS Deployment
+### 7. Deploy the New Image
 
 ```bash
-CLUSTER=$(terraform output -raw cluster_name)
-SERVICE=$(terraform output -raw service_name)
-REGION=$(terraform output -raw aws_region || echo "eu-west-2")
-
-aws ecs update-service \
-  --cluster $CLUSTER \
-  --service $SERVICE \
-  --force-new-deployment \
-  --region $REGION
+terraform apply -var="image_tag=$IMAGE_TAG"
 ```
 
 ### 8. Access Your App

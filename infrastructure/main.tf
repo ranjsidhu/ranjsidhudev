@@ -87,7 +87,7 @@ resource "aws_acm_certificate_validation" "app" {
 # ECR Repository
 resource "aws_ecr_repository" "app" {
   name                 = "${var.project_name}-ecr"
-  image_tag_mutability = "MUTABLE"
+  image_tag_mutability = "IMMUTABLE"
 
   image_scanning_configuration {
     scan_on_push = true
@@ -233,7 +233,7 @@ resource "aws_ecs_task_definition" "app" {
 
   container_definitions = jsonencode([{
     name      = "${var.project_name}-container"
-    image     = "${aws_ecr_repository.app.repository_url}:latest"
+    image     = "${aws_ecr_repository.app.repository_url}:${var.image_tag}"
     essential = true
 
     portMappings = [{
