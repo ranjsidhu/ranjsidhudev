@@ -27,11 +27,13 @@ A production-ready Terraform template for deploying Next.js applications to AWS 
 ### Install Terraform
 
 **macOS:**
+
 ```bash
 brew install terraform
 ```
 
 **Linux:**
+
 ```bash
 wget https://releases.hashicorp.com/terraform/1.7.0/terraform_1.7.0_linux_amd64.zip
 unzip terraform_1.7.0_linux_amd64.zip
@@ -42,6 +44,7 @@ sudo mv terraform /usr/local/bin/
 Download from https://www.terraform.io/downloads
 
 Verify installation:
+
 ```bash
 terraform version
 ```
@@ -185,6 +188,7 @@ environment_variables = [
 ### Fargate Spot Strategy
 
 When `enable_spot = true`:
+
 - **80% of tasks** run on Spot (cheap)
 - **20% of tasks** run on On-Demand (reliable)
 - Minimum of 1 task always on On-Demand
@@ -192,12 +196,14 @@ When `enable_spot = true`:
 ### Estimated Monthly Costs
 
 **Without Spot:**
+
 - 2 tasks (0.5 vCPU, 1GB): ~$15-20
 - ALB: ~$16-20
 - Data transfer: ~$5-10
 - **Total: ~$36-50/month**
 
 **With Spot:**
+
 - 2 tasks with 50% Spot: ~$8-12
 - ALB: ~$16-20
 - Data transfer: ~$5-10
@@ -268,6 +274,7 @@ jobs:
 ### With Route53
 
 Set these variables:
+
 ```hcl
 domain_name    = "example.com"
 subdomain      = "app"
@@ -275,6 +282,7 @@ hosted_zone_id = "Z1234567890ABC"
 ```
 
 Terraform will automatically:
+
 1. Create ACM certificate
 2. Validate via DNS
 3. Create A record
@@ -343,6 +351,7 @@ terraform output service_name
 ### Container won't start
 
 Check CloudWatch logs:
+
 ```bash
 aws logs tail /ecs/myapp --follow --region eu-west-2
 ```
@@ -350,6 +359,7 @@ aws logs tail /ecs/myapp --follow --region eu-west-2
 ### Can't pull image
 
 Verify:
+
 1. Image exists in ECR
 2. Task execution role has ECR permissions
 3. Image is tagged correctly
@@ -367,6 +377,7 @@ aws ecr describe-images --repository-name myapp-ecr --region eu-west-2
 ### Certificate validation stuck
 
 DNS records should auto-create. Check:
+
 ```bash
 terraform state show aws_route53_record.cert_validation
 ```
@@ -396,6 +407,7 @@ terraform {
 ```
 
 Then migrate:
+
 ```bash
 terraform init -migrate-state
 ```
@@ -405,6 +417,7 @@ terraform init -migrate-state
 Create separate `.tfvars` files:
 
 **production.tfvars:**
+
 ```hcl
 project_name  = "myapp-prod"
 domain_name   = "myapp.com"
@@ -414,6 +427,7 @@ memory        = 2048
 ```
 
 **staging.tfvars:**
+
 ```hcl
 project_name  = "myapp-staging"
 subdomain     = "staging"
@@ -422,6 +436,7 @@ desired_count = 2
 ```
 
 Deploy:
+
 ```bash
 terraform apply -var-file="production.tfvars"
 terraform apply -var-file="staging.tfvars"
@@ -470,6 +485,7 @@ terraform destroy
 ```
 
 **Note:** ECR repository has `prevent_destroy = true` to avoid accidentally deleting images. To delete it:
+
 1. Remove the lifecycle block from `main.tf`
 2. Run `terraform destroy` again
 
@@ -479,8 +495,8 @@ Ensure `next.config.js` has:
 
 ```javascript
 module.exports = {
-  output: 'standalone',
-}
+  output: "standalone",
+};
 ```
 
 ## Dockerfile Example
