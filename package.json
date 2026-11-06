@@ -12,6 +12,10 @@
     "test": "jest --coverage",
     "prepare": "husky"
   },
+  "overrides": {
+    "minimatch": "11.0.1",
+    "glob": "14.0.2"
+  },
   "dependencies": {
     "@aws-sdk/client-sesv2": "3.1164.0",
     "@tailwindcss/postcss": "4.3.5",
