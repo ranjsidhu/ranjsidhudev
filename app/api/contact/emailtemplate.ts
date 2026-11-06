@@ -1,6 +1,25 @@
 import type { ContactDetails } from "@/types";
 
+const HTML_ESCAPES: Record<string, string> = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+};
+
+// Visitor input must render as text in the email, never as markup.
+export const escapeHtml = (value: string) =>
+  value.replace(/[&<>"']/g, (char) => HTML_ESCAPES[char]);
+
 export const formatEmail = (details: ContactDetails, subject: string) => {
+  const name = escapeHtml(details.name);
+  const email = escapeHtml(details.email);
+  const enquiryType = escapeHtml(details.enquiryType);
+  const safeSubject = escapeHtml(subject);
+  // Escape first, then convert newlines, so only our own <br> tags are markup.
+  const message = escapeHtml(details.message).replace(/\r?\n/g, "<br>");
+
   return `
         <!DOCTYPE html>
         <html>
@@ -32,29 +51,29 @@ export const formatEmail = (details: ContactDetails, subject: string) => {
                     <h2 style="color: #111; font-size: 18px; margin: 0 0 15px 0; padding-bottom: 10px; border-bottom: 1px solid #e5e5e5; font-weight: 400;">Contact Information</h2>
                     <p style="margin: 0 0 10px 0; font-size: 16px;">
                       <strong style="color: #555;">Name:</strong> 
-                      <span style="color: #111;">${details.name}</span>
+                      <span style="color: #111;">${name}</span>
                     </p>
                     <p style="margin: 0 0 10px 0; font-size: 16px;">
                       <strong style="color: #555;">Email:</strong> 
-                      <span style="color: #111;">${details.email}</span>
+                      <span style="color: #111;">${email}</span>
                     </p>
                     <p style="margin: 0 0 10px 0; font-size: 16px;">
                       <strong style="color: #555;">Enquiry Type:</strong> 
-                      <span style="color: #111;">${details.enquiryType}</span>
+                      <span style="color: #111;">${enquiryType}</span>
                     </p>
                   </div>
     
                   <!-- Subject -->
                   <div style="margin-bottom: 30px;">
                     <h2 style="color: #111; font-size: 18px; margin: 0 0 15px 0; padding-bottom: 10px; border-bottom: 1px solid #e5e5e5; font-weight: 400;">Subject</h2>
-                    <p style="margin: 0 0 10px 0; font-size: 16px; color: #111;">${subject}</p>
+                    <p style="margin: 0 0 10px 0; font-size: 16px; color: #111;">${safeSubject}</p>
                   </div>
     
                   <!-- Message -->
                   <div style="margin-bottom: 30px;">
                     <h2 style="color: #111; font-size: 18px; margin: 0 0 15px 0; padding-bottom: 10px; border-bottom: 1px solid #e5e5e5; font-weight: 400;">Message</h2>
                     <div style="margin: 0; font-size: 16px; color: #111; line-height: 1.6; background-color: #fafafa; padding: 20px; border-left: 4px solid #111; border-radius: 4px;">
-                      ${details.message.replace(/\n/g, "<br>")}
+                      ${message}
                     </div>
                   </div>
                 </td>
