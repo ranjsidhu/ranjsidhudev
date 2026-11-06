@@ -1,6 +1,6 @@
 terraform {
   required_version = ">= 1.0"
-  
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -38,17 +38,17 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  app_fqdn                  = var.subdomain != "" ? "${var.subdomain}.${var.domain_name}" : var.domain_name
-  certificate_domains       = var.subdomain != "" ? [var.domain_name, "${var.subdomain}.${var.domain_name}"] : [var.domain_name]
-  listener_certificate_arn  = aws_acm_certificate_validation.app[0].certificate_arn
+  app_fqdn                 = var.subdomain != "" ? "${var.subdomain}.${var.domain_name}" : var.domain_name
+  certificate_domains      = var.subdomain != "" ? [var.domain_name, "${var.subdomain}.${var.domain_name}"] : [var.domain_name]
+  listener_certificate_arn = aws_acm_certificate_validation.app[0].certificate_arn
 }
 
 # ACM Certificate 
 resource "aws_acm_certificate" "app" {
-  count             = var.domain_name != "" ? 1 : 0
-  domain_name       = local.certificate_domains[0]
+  count                     = var.domain_name != "" ? 1 : 0
+  domain_name               = local.certificate_domains[0]
   subject_alternative_names = slice(local.certificate_domains, 1, length(local.certificate_domains))
-  validation_method = "DNS"
+  validation_method         = "DNS"
 
   lifecycle {
     create_before_destroy = true
@@ -112,9 +112,9 @@ resource "aws_ecr_lifecycle_policy" "app" {
       rulePriority = 1
       description  = "Keep last 10 images"
       selection = {
-        tagStatus     = "any"
-        countType     = "imageCountMoreThan"
-        countNumber   = 10
+        tagStatus   = "any"
+        countType   = "imageCountMoreThan"
+        countNumber = 10
       }
       action = {
         type = "expire"
@@ -219,6 +219,26 @@ resource "aws_iam_role" "ecs_task_role" {
     Project     = var.project_name
     application = "rsdev"
   }
+}
+
+# Let the app send email through SES as the task role instead of static keys
+resource "aws_iam_role_policy" "ecs_task_ses" {
+  count = length(var.ses_identities) > 0 ? 1 : 0
+  name  = "${var.project_name}-ses-send"
+  role  = aws_iam_role.ecs_task_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Sid    = "SendContactEmail"
+      Effect = "Allow"
+      Action = ["ses:SendEmail"]
+      Resource = [
+        for identity in var.ses_identities :
+        "arn:aws:ses:${var.aws_region}:${data.aws_caller_identity.current.account_id}:identity/${identity}"
+      ]
+    }]
+  })
 }
 
 # Task Definition

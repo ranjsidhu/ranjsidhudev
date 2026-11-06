@@ -11,7 +11,14 @@ permissions:
   contents: write
   pull-requests: write
 
+# Only one release run at a time; queued runs wait rather than cancel.
+concurrency:
+  group: release-develop-to-main
+  cancel-in-progress: false
+
 jobs:
+  # The merge to main (made with RELEASE_PAT) triggers vercel-prod.yaml on
+  # push, which deploys the merged main commit. There is no deploy job here.
   release:
     if: |
       github.event_name != 'pull_request' ||
@@ -19,8 +26,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.RELEASE_PAT }}
-    outputs:
-      merged: ${{ steps.wait_merge.outputs.merged }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -32,18 +37,29 @@ jobs:
           count=$(gh pr list --state open --author "dependabot[bot]" --json number --jq 'length')
           echo "count=$count" >> "$GITHUB_OUTPUT"
 
+      - name: Pin develop head commit
+        id: develop
+        if: steps.dependabot.outputs.count == '0'
+        run: |
+          sha=$(gh api "repos/$GITHUB_REPOSITORY/branches/develop" --jq '.commit.sha')
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
       - name: Check if develop is ahead of main
         id: compare
         if: steps.dependabot.outputs.count == '0'
+        env:
+          DEVELOP_SHA: ${{ steps.develop.outputs.sha }}
         run: |
-          ahead=$(gh api repos/$GITHUB_REPOSITORY/compare/main...develop --jq '.ahead_by')
+          ahead=$(gh api "repos/$GITHUB_REPOSITORY/compare/main...$DEVELOP_SHA" --jq '.ahead_by')
           echo "ahead=$ahead" >> "$GITHUB_OUTPUT"
 
       - name: Verify changes are only package files
         id: package_changes
         if: steps.dependabot.outputs.count == '0' && steps.compare.outputs.ahead != '0'
+        env:
+          DEVELOP_SHA: ${{ steps.develop.outputs.sha }}
         run: |
-          files_json=$(gh api repos/$GITHUB_REPOSITORY/compare/main...develop --jq '[.files[].filename]')
+          files_json=$(gh api "repos/$GITHUB_REPOSITORY/compare/main...$DEVELOP_SHA" --jq '[.files[].filename]')
           file_count=$(echo "$files_json" | jq 'length')
           allowed_only=$(echo "$files_json" | jq -r 'all(.[]; . == "package.json" or . == "package-lock.json")')
           if [[ "$file_count" -gt 0 && "$allowed_only" == "true" ]]; then
@@ -65,30 +81,11 @@ jobs:
           fi
           echo "number=$pr_number" >> "$GITHUB_OUTPUT"
 
-      - name: Enable auto-merge
+      - name: Enable auto-merge for the verified commit
         if: steps.release_pr.outputs.number != ''
-        run: gh pr merge --auto --merge "${{ steps.release_pr.outputs.number }}"
-
-      - name: Wait for PR to merge
-        id: wait_merge
-        if: steps.release_pr.outputs.number != ''
-        run: |
-          pr_number="${{ steps.release_pr.outputs.number }}"
-          for i in $(seq 1 30); do
-            state=$(gh pr view "$pr_number" --json state --jq '.state')
-            if [[ "$state" == "MERGED" ]]; then
-              echo "merged=true" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-            sleep 10
-          done
-          echo "merged=false" >> "$GITHUB_OUTPUT"
-
-  deploy:
-    needs: release
-    if: needs.release.outputs.merged == 'true'
-    uses: ./.github/workflows/vercel-prod.yaml
-    secrets:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        env:
+          PR_NUMBER: ${{ steps.release_pr.outputs.number }}
+          DEVELOP_SHA: ${{ steps.develop.outputs.sha }}
+        # --match-head-commit refuses the merge if develop moved after the
+        # package-only check, so only the verified commit can reach main.
+        run: gh pr merge --auto --merge --match-head-commit "$DEVELOP_SHA" "$PR_NUMBER"

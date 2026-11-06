@@ -12,73 +12,70 @@ const getSESClient = () => {
     if (!AWS_REGION) {
       throw new Error("AWS_REGION environment variable is required");
     }
-    if (!AWS_AK) {
-      throw new Error("AWS_AK environment variable is required");
-    }
-    if (!AWS_SECRET_ACCESS_KEY) {
-      throw new Error("AWS_SECRET_ACCESS_KEY environment variable is required");
+    if (Boolean(AWS_AK) !== Boolean(AWS_SECRET_ACCESS_KEY)) {
+      throw new Error(
+        "AWS_AK and AWS_SECRET_ACCESS_KEY must be set together, or both left unset",
+      );
     }
 
-    client = new SESv2Client({
-      region: AWS_REGION,
-      credentials: {
-        accessKeyId: AWS_AK,
-        secretAccessKey: AWS_SECRET_ACCESS_KEY,
-      },
-    });
-    logger.info("SES client initialized");
+    // Static keys where no IAM role is available (e.g. Vercel). Otherwise the
+    // SDK's default credential chain is used, such as the ECS task role.
+    const useStaticKeys = Boolean(AWS_AK && AWS_SECRET_ACCESS_KEY);
+    client = new SESv2Client(
+      useStaticKeys
+        ? {
+            region: AWS_REGION,
+            credentials: {
+              accessKeyId: AWS_AK as string,
+              secretAccessKey: AWS_SECRET_ACCESS_KEY as string,
+            },
+          }
+        : { region: AWS_REGION },
+    );
+    logger.info(
+      { credentials: useStaticKeys ? "static" : "default-chain" },
+      "SES client initialized",
+    );
   }
   return client;
 };
 
+/**
+ * Sends an HTML email to the site owner. Throws on misconfiguration or SES
+ * failure so the caller can report the failure; it never fails silently.
+ */
 const sendEmail = async (replyTo: string, subject: string, html: string) => {
-  logger.info({ subject, replyTo }, "Sending email via SES");
+  const { SENDER_EMAIL, ADMIN_DESTINATION_EMAIL } = process.env;
 
-  try {
-    const { SENDER_EMAIL, ADMIN_DESTINATION_EMAIL } = process.env;
+  if (!SENDER_EMAIL) {
+    throw new Error("SENDER_EMAIL environment variable is required");
+  }
+  if (!ADMIN_DESTINATION_EMAIL) {
+    throw new Error("ADMIN_DESTINATION_EMAIL environment variable is required");
+  }
 
-    // Validate SENDER_EMAIL at runtime
-    if (!SENDER_EMAIL) {
-      throw new Error("SENDER_EMAIL environment variable is required");
-    }
-    if (!ADMIN_DESTINATION_EMAIL) {
-      throw new Error(
-        "ADMIN_DESTINATION_EMAIL environment variable is required",
-      );
-    }
-
-    const command = new SendEmailCommand({
-      FromEmailAddress: SENDER_EMAIL,
-      Destination: {
-        ToAddresses: [ADMIN_DESTINATION_EMAIL],
-      },
-      ReplyToAddresses: [replyTo],
-      FeedbackForwardingEmailAddress: ADMIN_DESTINATION_EMAIL,
-      Content: {
-        Simple: {
-          Subject: {
-            Data: subject,
-          },
-          Body: {
-            Html: {
-              Data: html,
-            },
+  const command = new SendEmailCommand({
+    FromEmailAddress: SENDER_EMAIL,
+    Destination: {
+      ToAddresses: [ADMIN_DESTINATION_EMAIL],
+    },
+    ReplyToAddresses: [replyTo],
+    FeedbackForwardingEmailAddress: ADMIN_DESTINATION_EMAIL,
+    Content: {
+      Simple: {
+        Subject: {
+          Data: subject,
+        },
+        Body: {
+          Html: {
+            Data: html,
           },
         },
       },
-    });
-    const res = await getSESClient().send(command);
-    logger.info(
-      { messageId: res.MessageId },
-      "Email sent successfully via SES",
-    );
-    return res;
-  } catch (error: unknown) {
-    logger.error(
-      { err: error, subject, replyTo },
-      "Failed to send email via SES",
-    );
-  }
+    },
+  });
+
+  return getSESClient().send(command);
 };
 
 export { sendEmail };
