@@ -64,12 +64,26 @@ variable "enable_spot" {
 }
 
 variable "environment_variables" {
-  description = "Additional environment variables for the container"
+  description = "Additional environment variables for the container. Do not put AWS credentials here; the task role grants SES access."
   type = list(object({
     name  = string
     value = string
   }))
   default = []
+
+  validation {
+    condition = alltrue([
+      for env in var.environment_variables :
+      !contains(["AWS_AK", "AWS_SECRET_ACCESS_KEY", "AWS_ACCESS_KEY_ID", "AWS_SESSION_TOKEN"], env.name)
+    ])
+    error_message = "Do not pass AWS credentials as plaintext container environment variables. Remove them and list the sender identities in ses_identities instead."
+  }
+}
+
+variable "ses_identities" {
+  description = "Verified SES identities the app may send as or forward feedback to (domains or email addresses), e.g. [\"ranjsidhu.dev\", \"owner@example.com\"]"
+  type        = list(string)
+  default     = []
 }
 
 variable "image_tag" {

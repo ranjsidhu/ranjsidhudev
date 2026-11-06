@@ -1,9 +1,18 @@
 "use client";
 
 import { ArrowRight, Globe, Mail, MessageSquare, Send } from "lucide-react";
+import Script from "next/script";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { ENQUIRY_OPTIONS, initialForm, validateEmail } from "@/constants";
+import {
+  CONTACT_ERROR_MESSAGE,
+  CONTACT_LIMITS,
+  ENQUIRY_OPTIONS,
+  initialForm,
+  RECAPTCHA_ACTION,
+  validateEmail,
+} from "@/constants";
+import { getRecaptchaToken, RECAPTCHA_SITE_KEY } from "@/lib/recaptchaClient";
 import type { ContactDetails } from "@/types";
 import { submitContactForm } from "./serveractions";
 
@@ -24,21 +33,33 @@ export default function Contact() {
       toast.error("Please enter a valid email address.");
       return;
     }
+    setIsSubmitting(true);
     try {
-      setIsSubmitting(true);
-      await submitContactForm(form);
-    } catch (error: unknown) {
-      console.error("Error submitting form:", (error as Error).message);
-      toast.error("There was an error submitting the form. Please try again.");
+      const token = await getRecaptchaToken(RECAPTCHA_ACTION);
+      const { success } = await submitContactForm(form, token);
+      if (success) {
+        setSubmitted(true);
+        setForm(initialForm);
+      } else {
+        toast.error(CONTACT_ERROR_MESSAGE);
+      }
+    } catch {
+      // Technical details are logged server-side; the visitor only sees a
+      // friendly message, and their message stays in the form to retry.
+      toast.error(CONTACT_ERROR_MESSAGE);
     } finally {
-      setSubmitted(true);
-      setForm(initialForm);
       setIsSubmitting(false);
     }
   };
 
   return (
     <div className="min-h-screen">
+      {RECAPTCHA_SITE_KEY && (
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+          strategy="afterInteractive"
+        />
+      )}
       {/* ── Hero — centered, impactful ── */}
       <section className="relative overflow-hidden">
         <div className="animated-gradient-bg absolute inset-0" />
@@ -144,6 +165,7 @@ export default function Contact() {
                     <input
                       id="name"
                       name="name"
+                      maxLength={CONTACT_LIMITS.name}
                       type="text"
                       required
                       value={form.name}
@@ -162,6 +184,7 @@ export default function Contact() {
                     <input
                       id="email"
                       name="email"
+                      maxLength={CONTACT_LIMITS.email}
                       type="text"
                       required
                       value={form.email}
@@ -189,7 +212,7 @@ export default function Contact() {
                     {ENQUIRY_OPTIONS.map((option) => (
                       <option
                         key={option.value}
-                        value={option.label}
+                        value={option.value}
                         className="bg-[#0a0118] text-white"
                       >
                         {option.label}
@@ -207,6 +230,7 @@ export default function Contact() {
                   <textarea
                     id="message"
                     name="message"
+                    maxLength={CONTACT_LIMITS.message}
                     required
                     rows={6}
                     value={form.message}

@@ -29,6 +29,15 @@ yarn-error.log*
 # local env files
 .env*
 
+# infrastructure (Terraform state and tfvars can contain credentials)
+infrastructure
+
+# tests, tooling and audit output not needed in the image
+__tests__
+.agents
+.claude
+run-1
+
 # vercel
 .vercel
 

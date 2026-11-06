@@ -174,14 +174,26 @@ memory         = 1024               # Memory in MB
 container_port = 3000               # App port
 enable_spot    = true               # Use Fargate Spot
 
-# Custom environment variables
+# Custom environment variables (never AWS credentials; validation rejects them)
 environment_variables = [
   {
     name  = "API_URL"
     value = "https://api.example.com"
   }
 ]
+
+# Verified SES identities the task role may send as (sender domain or address,
+# plus the feedback-forwarding address)
+ses_identities = ["example.com", "owner@example.com"]
 ```
+
+### SES credentials
+
+On ECS the app sends email as the task role, which gets `ses:SendEmail` on the
+identities in `ses_identities`. Leave `AWS_AK` and `AWS_SECRET_ACCESS_KEY` unset
+for the container: the AWS SDK picks up the task role automatically. Static
+keys are only for hosts without an IAM role, such as Vercel, and must be set as
+a pair.
 
 ## Cost Optimization
 
